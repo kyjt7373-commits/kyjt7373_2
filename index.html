@@ -308,7 +308,7 @@
                             <label class="font-bold text-zinc-300 block mb-1">
                                 1. 탐구 대상 주요 과학적 발견 및 시대적 배경
                             </label>
-                            <textarea id="ws-overview" rows="3" class="w-full p-3 rounded-xl border border-zinc-800 text-xs" placeholder="탐구 내용 개요를 입력하세요..."></textarea>
+                            <textarea id="ws-overview" rows="3" class="w-full p-3 rounded-xl border border-zinc-800 text-xs" placeholder="탐구 내용 개요를 직접 입력하세요..."></textarea>
                         </div>
 
                         <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
@@ -320,20 +320,20 @@
                                     <input type="radio" name="ws-method-type" value="inductive" class="accent-tesla-red"> 귀납적 탐구
                                 </label>
                                 <label class="flex items-center gap-2 cursor-pointer hover:text-white">
-                                    <input type="radio" name="ws-method-type" value="deductive" class="accent-tesla-red"> 연역적 탐구
+                                    <input type="radio" name="ws-method-type" value="deductive" class="accent-tesla-red" checked> 연역적 탐구
                                 </label>
                                 <label class="flex items-center gap-2 cursor-pointer hover:text-white">
                                     <input type="radio" name="ws-method-type" value="mixed" class="accent-tesla-red"> 병행/복합 모델
                                 </label>
                             </div>
-                            <textarea id="ws-method-detail" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 연구 방법 근거를 입력하세요."></textarea>
+                            <textarea id="ws-method-detail" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 연구 방법 근거 및 과정을 직접 입력하세요."></textarea>
                         </div>
 
                         <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
                             <label class="font-bold text-sky-400 block flex items-center gap-1.5">
                                 <i class="fa-solid fa-globe"></i> 3. 다른 학문 및 사회에 미친 영향 분석
                             </label>
-                            <textarea id="ws-impact" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="사회적/학문적 영향을 기술하세요."></textarea>
+                            <textarea id="ws-impact" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="해당 발견이 학문과 사회에 미친 영향에 대해 기술하세요."></textarea>
                         </div>
 
                         <div>
@@ -951,7 +951,7 @@
             window.loadGroupData();
         };
 
-        // Group Data Form Loader
+        // Group Data Form Loader (수정: 예시 데이터 자동 채우기 제거)
         window.loadGroupData = function() {
             const groupId = document.getElementById('group-select')?.value || 'g1';
             const item = timelineData.find(x => x.id === groupId);
@@ -968,13 +968,14 @@
             document.getElementById('role-designer').value = data.roleDesigner || '';
             document.getElementById('role-presenter').value = data.rolePresenter || '';
 
-            document.getElementById('ws-overview').value = data.overview || item?.summary || '';
-            document.getElementById('ws-method-detail').value = data.methodDetail || item?.detail || '';
-            document.getElementById('ws-impact').value = data.impact || item?.impact || '';
+            // 기존 입력값이 있는 경우에만 표시하고, 없으면 빈 칸으로 초기화
+            document.getElementById('ws-overview').value = data.overview || '';
+            document.getElementById('ws-method-detail').value = data.methodDetail || '';
+            document.getElementById('ws-impact').value = data.impact || '';
             document.getElementById('ws-link').value = data.link || '';
 
             const radios = document.getElementsByName('ws-method-type');
-            const methodVal = data.methodType || item?.methodType || 'deductive';
+            const methodVal = data.methodType || 'deductive';
             radios.forEach(r => {
                 r.checked = (r.value === methodVal);
             });
@@ -1232,7 +1233,7 @@
 
                         <div class="bg-zinc-900/90 p-3 rounded-xl border border-zinc-800 space-y-1 text-xs">
                             <span class="font-bold text-zinc-300">연구 방법 분석 요약:</span>
-                            <p class="text-zinc-400 text-[11px] line-clamp-3">${data.methodDetail || item.detail}</p>
+                            <p class="text-zinc-400 text-[11px] line-clamp-3">${data.methodDetail || '작성된 모둠 내용이 아직 없습니다.'}</p>
                         </div>
 
                         <!-- Peer Feedbacks List -->
@@ -1378,7 +1379,7 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
                         <span class="bg-zinc-800 text-zinc-200 px-2 py-0.5 rounded text-[11px] font-semibold">${data.methodType || item.methodType}</span>
                     </td>
                     <td class="p-3 text-zinc-300">
-                        <p class="line-clamp-2">${data.overview || item.summary}</p>
+                        <p class="line-clamp-2">${data.overview || '미작성'}</p>
                     </td>
                     <td class="p-3 text-zinc-300">
                         <div id="teacher-feedback-box-${item.id}" class="bg-zinc-950 p-2 rounded border border-zinc-800 text-[11px] ${data.teacherAiFeedback ? 'text-amber-300' : 'text-zinc-500'}">
@@ -1400,7 +1401,7 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
             const data = window.groupWorksheetsData[groupId] || {};
 
             showToast("AI가 모둠 작성 내용을 평가 중입니다...");
-            const prompt = `생명과학 교사로서 ${item.title} 주제에 대해 탐구한 학생들의 작성 내용(연구방법: ${data.methodDetail || item.detail}, 사회적 영향: ${data.impact || item.impact})을 바탕으로 칭찬과 구체적 보완 지도가 담긴 2줄 이내의 총평을 작성해줘.`;
+            const prompt = `생명과학 교사로서 ${item.title} 주제에 대해 탐구한 학생들의 작성 내용(연구방법: ${data.methodDetail || '미작성'}, 사회적 영향: ${data.impact || '미작성'})을 바탕으로 칭찬과 구체적 보완 지도가 담긴 2줄 이내의 총평을 작성해줘.`;
 
             try {
                 const feedback = await callGeminiApi(prompt);
@@ -1418,7 +1419,7 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
         }
 
         async function generateAllAiFeedbacks() {
-            showToast("전체 모둠 AI 피드백을 생성을 시작합니다...");
+            showToast("전체 모둠 AI 피드백 생성을 시작합니다...");
             for (let item of timelineData) {
                 await generateSingleAiFeedback(item.id);
             }
@@ -1564,8 +1565,8 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
                     `"${item.title.replace(/"/g, '""')}"`,
                     `"${item.scientist.replace(/"/g, '""')}"`,
                     `"${data.methodType || item.methodType}"`,
-                    `"${(data.methodDetail || item.detail).replace(/"/g, '""')}"`,
-                    `"${(data.impact || item.impact).replace(/"/g, '""')}"`,
+                    `"${(data.methodDetail || '').replace(/"/g, '""')}"`,
+                    `"${(data.impact || '').replace(/"/g, '""')}"`,
                     `"${(data.teacherAiFeedback || '').replace(/"/g, '""')}"`
                 ].join(",");
                 csvContent += row + "\n";
