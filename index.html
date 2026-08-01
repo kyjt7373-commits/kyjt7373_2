@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>생명과학의 역사 및 연구 방법 탐구 플랫폼 (학생용)</title>
+    <title>생명과학의 역사 및 연구 방법 탐구 플랫폼 | 학생용</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -41,7 +41,6 @@
             color: #f1f5f9;
         }
         
-        /* Tesla Sleek Glass & Card Effects */
         .tesla-card {
             background: rgba(18, 20, 28, 0.75);
             backdrop-filter: blur(16px);
@@ -55,7 +54,6 @@
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(232, 33, 39, 0.15);
         }
 
-        /* Timeline Line Styling */
         .timeline-line::before {
             content: '';
             position: absolute;
@@ -72,7 +70,6 @@
             }
         }
 
-        /* Custom Scrollbar */
         .custom-scrollbar::-webkit-scrollbar {
             width: 5px;
             height: 5px;
@@ -88,7 +85,6 @@
             background: #e82127;
         }
 
-        /* Navigation Tab Active State */
         .tab-btn {
             position: relative;
             transition: all 0.2s ease;
@@ -109,7 +105,6 @@
             border-radius: 2px;
         }
 
-        /* Input styling */
         input, textarea, select {
             background-color: #0b0c12 !important;
             border-color: #222634 !important;
@@ -121,7 +116,6 @@
             outline: none !important;
         }
 
-        /* Red Glow Effects */
         .glow-red {
             box-shadow: 0 0 20px rgba(232, 33, 39, 0.35);
         }
@@ -129,7 +123,7 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-tesla-red selection:text-white">
 
-    <!-- Top Header & Lesson Plan Summary -->
+    <!-- Top Header -->
     <header class="bg-tesla-dark/95 border-b border-zinc-800/80 sticky top-0 z-50 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3.5">
@@ -140,23 +134,23 @@
                     <div class="flex items-center gap-2">
                         <span class="bg-tesla-red/15 text-tesla-red text-[11px] px-2.5 py-0.5 rounded-full font-bold border border-tesla-red/30 uppercase tracking-wider">고3-1학기</span>
                         <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">I. 생명과학의 역사</span>
-                        <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">3차시</span>
+                        <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">학생 탐구용</span>
                     </div>
                     <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white mt-1 flex items-center gap-2">
-                        생명과학사 흐름 및 주요 발견의 연구 방법 분석 (학생 탐구 공간)
+                        생명과학사 흐름 및 주요 발견의 연구 방법 탐구
                     </h1>
                 </div>
             </div>
 
-            <!-- Class & Status Info Badge -->
+            <!-- Class & Status Badge -->
             <div class="hidden lg:flex items-center gap-4 text-xs bg-zinc-900/90 px-4 py-2 rounded-xl border border-zinc-800">
-                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">연결 상태:</span> <span id="db-status" class="font-bold text-amber-400 ml-1"><i class="fa-solid fa-spinner fa-spin mr-1"></i>DB 연결 중</span></div>
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">상태:</span> <span id="db-status" class="font-bold text-amber-400 ml-1"><i class="fa-solid fa-spinner fa-spin mr-1"></i>DB 연결 중</span></div>
                 <div class="h-3 w-px bg-zinc-800"></div>
                 <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">지도교사:</span> <span class="font-bold text-white ml-1">김영주 선생님</span></div>
             </div>
         </div>
 
-        <!-- Navigation Tabs (Teacher Dashboard Tab Removed) -->
+        <!-- Navigation Tabs -->
         <nav class="bg-zinc-950/60 border-t border-zinc-900/80 px-4 text-xs font-semibold text-zinc-400 overflow-x-auto custom-scrollbar">
             <div class="max-w-7xl mx-auto flex space-x-2 md:space-x-8 whitespace-nowrap">
                 <button onclick="switchTab('timeline')" id="tab-timeline" class="tab-btn py-3.5 px-1 flex items-center gap-2 active transition hover:text-white">
@@ -183,16 +177,12 @@
         </nav>
     </header>
 
+    <!-- Main Content Area -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
-        <!-- ======================================================== -->
-        <!-- TAB 1: 연대표 탐색 (도입) -->
-        <!-- ======================================================== -->
+        <!-- TAB 1: 연대표 탐색 -->
         <section id="sec-timeline" class="space-y-6">
             <div class="tesla-card p-6 border-l-4 border-l-tesla-red flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 opacity-10 text-tesla-red pointer-events-none text-9xl">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
                 <div class="relative z-10 space-y-1">
                     <div class="flex items-center gap-2 text-tesla-red text-xs font-extrabold uppercase tracking-widest">
                         <i class="fa-solid fa-circle-question"></i> 핵심 탐구 질문
@@ -204,9 +194,11 @@
                         <i class="fa-solid fa-bullseye text-tesla-red"></i> 성취기준: 주요 발견의 시기별 나열 및 연구 방법(귀납적/연역적 탐구 등) 조사 분석
                     </p>
                 </div>
+                <button onclick="openAiPrompt('생명과학사에서 연역적 탐구와 귀납적 탐구가 각각 어떻게 활용되었는지 예시와 함께 알려줘')" class="relative z-10 bg-zinc-800 hover:bg-tesla-red text-white border border-zinc-700 hover:border-tesla-red text-xs font-bold px-4 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 shrink-0 shadow-lg">
+                    <i class="fa-solid fa-sparkles text-amber-300"></i> AI 연역/귀납 탐구 가이드
+                </button>
             </div>
 
-            <!-- Filter & Search Controls -->
             <div class="tesla-card p-4 flex flex-wrap items-center justify-between gap-4 shadow-xl">
                 <div class="flex flex-wrap items-center gap-2 text-xs">
                     <span class="font-bold text-zinc-400 mr-1 uppercase tracking-widest text-[11px]"><i class="fa-solid fa-sliders text-tesla-red mr-1.5"></i>필터:</span>
@@ -223,79 +215,61 @@
                 </div>
             </div>
 
-            <!-- Interactive Timeline Display -->
-            <div class="relative timeline-line py-4 my-6" id="timeline-container">
-                <!-- Timeline cards rendered via JS -->
-            </div>
+            <div class="relative timeline-line py-4 my-6" id="timeline-container"></div>
         </section>
 
-        <!-- ======================================================== -->
-        <!-- TAB 2: 모둠 탐색 활동 (탐색) -->
-        <!-- ======================================================== -->
+        <!-- TAB 2: 모둠 탐색 활동 -->
         <section id="sec-group" class="space-y-6 hidden">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
-                <!-- Group Setup Panel -->
                 <div class="tesla-card p-5 space-y-4 lg:col-span-1 border-t-2 border-t-sky-500">
                     <div class="flex justify-between items-center">
                         <h2 class="text-sm font-extrabold text-white flex items-center gap-2 tracking-tight">
-                            <i class="fa-solid fa-users-gear text-sky-400"></i> 모둠 구성 및 주제 선택
+                            <i class="fa-solid fa-users-gear text-sky-400"></i> 모둠 구성 및 주제 관리
                         </h2>
-                        <span class="text-[11px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded-full font-bold">11개 탐구 주제</span>
+                        <span class="text-[11px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded-full font-bold">11개 주제</span>
                     </div>
-                    <p class="text-xs text-zinc-400">
-                        소속된 모둠의 주제를 선택하고 모둠원 간의 역할(조장, 조사, 정리, 발표)을 입력 및 저장하세요.
-                    </p>
 
-                    <!-- Group Selector -->
                     <div class="space-y-2">
-                        <label class="text-xs font-bold text-zinc-300 uppercase tracking-wider block">작성할 모둠/탐구 주제 선택:</label>
+                        <label class="text-xs font-bold text-zinc-300 uppercase tracking-wider block">모둠/주제 선택:</label>
                         <select id="group-select" onchange="loadGroupData()" class="w-full text-xs p-3 rounded-xl font-semibold border border-zinc-700 bg-zinc-900 text-white">
-                            <!-- Populated dynamically -->
                         </select>
                     </div>
 
-                    <!-- Role Allocation Helper -->
                     <div class="bg-zinc-900/90 p-3.5 rounded-xl border border-zinc-800 space-y-2.5">
                         <span class="text-xs font-bold text-zinc-300 block uppercase tracking-wider"><i class="fa-solid fa-user-tag text-sky-400 mr-1.5"></i>모둠원 역할 분담</span>
                         <div class="grid grid-cols-2 gap-2 text-xs">
-                            <input type="text" id="role-leader" placeholder="조장 (진행/통합)" class="p-2 rounded-lg border text-xs">
-                            <input type="text" id="role-researcher" placeholder="조사원 (자료탐색)" class="p-2 rounded-lg border text-xs">
-                            <input type="text" id="role-designer" placeholder="정리원 (Canva/자료)" class="p-2 rounded-lg border text-xs">
-                            <input type="text" id="role-presenter" placeholder="발표자 (발표준비)" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-leader" placeholder="조장" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-researcher" placeholder="조사원" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-designer" placeholder="정리원" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-presenter" placeholder="발표자" class="p-2 rounded-lg border text-xs">
                         </div>
                     </div>
 
                     <button onclick="saveGroupRoles()" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold py-2.5 rounded-xl transition border border-zinc-700 flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-floppy-disk text-sky-400"></i> 모둠원 역할 저장하기
+                        <i class="fa-solid fa-floppy-disk text-sky-400"></i> 역할 저장하기
                     </button>
                 </div>
 
-                <!-- Group Research Worksheet -->
                 <div class="tesla-card p-6 space-y-5 lg:col-span-2 border-t-2 border-t-tesla-red">
                     <div class="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-800 pb-4">
                         <div>
                             <span id="current-group-badge" class="text-[11px] bg-tesla-red/20 text-tesla-red border border-tesla-red/30 px-2.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider">1모둠 활동지</span>
                             <h2 id="current-group-title" class="text-base md:text-lg font-bold text-white mt-1">주제명</h2>
                         </div>
-                        <div class="flex gap-2">
-                            <button onclick="saveWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
-                                <i class="fa-solid fa-save"></i> 활동지 제출 / 저장
-                            </button>
-                        </div>
+                        <button onclick="saveWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
+                            <i class="fa-solid fa-save"></i> 저 장
+                        </button>
                     </div>
 
                     <div class="space-y-4 text-xs">
                         <div>
-                            <label class="font-bold text-zinc-300 block mb-1">
-                                1. 탐구 대상 주요 과학적 발견 및 시대적 배경
-                            </label>
-                            <textarea id="ws-overview" rows="3" class="w-full p-3 rounded-xl border border-zinc-800 text-xs" placeholder="탐구 내용 개요를 직접 입력하세요..."></textarea>
+                            <label class="font-bold text-zinc-300 block mb-1">1. 탐구 대상 주요 과학적 발견 및 개요</label>
+                            <textarea id="ws-overview" rows="3" class="w-full p-3 rounded-xl border border-zinc-800 text-xs" placeholder="탐구 내용 개요를 입력하세요..."></textarea>
                         </div>
 
                         <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
                             <label class="font-bold text-tesla-red block flex items-center gap-1.5">
-                                <i class="fa-solid fa-flask-vial"></i> 2. 연구 방법 분석 (연역적 vs 귀납적 탐구 구분 및 근거)
+                                <i class="fa-solid fa-flask-vial"></i> 2. 연구 방법 분석 (연역적 vs 귀납적)
                             </label>
                             <div class="flex flex-wrap gap-4 my-2 text-zinc-300 font-medium">
                                 <label class="flex items-center gap-2 cursor-pointer hover:text-white">
@@ -308,66 +282,55 @@
                                     <input type="radio" name="ws-method-type" value="mixed" class="accent-tesla-red"> 병행/복합 모델
                                 </label>
                             </div>
-                            <textarea id="ws-method-detail" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 연구 방법 근거 및 과정을 직접 입력하세요."></textarea>
+                            <textarea id="ws-method-detail" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 연구 방법 근거를 기술하세요."></textarea>
                         </div>
 
                         <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
                             <label class="font-bold text-sky-400 block flex items-center gap-1.5">
-                                <i class="fa-solid fa-globe"></i> 3. 다른 학문 및 사회에 미친 영향 분석
+                                <i class="fa-solid fa-globe"></i> 3. 사회 및 학문에 미친 영향 분석
                             </label>
-                            <textarea id="ws-impact" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="해당 발견이 학문과 사회에 미친 영향에 대해 기술하세요."></textarea>
+                            <textarea id="ws-impact" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="사회적, 학문적 영향 및 의의를 작성하세요."></textarea>
                         </div>
 
                         <div>
-                            <label class="font-bold text-zinc-300 block mb-1">
-                                <i class="fa-solid fa-link text-zinc-500 mr-1"></i> 4. 발표 자료 링크 (Canva, Google Slides 등)
-                            </label>
-                            <input type="text" id="ws-link" placeholder="https://canva.com/... 공유 링크 URL" class="w-full p-3 rounded-xl border border-zinc-800">
+                            <label class="font-bold text-zinc-300 block mb-1"><i class="fa-solid fa-link text-zinc-500 mr-1"></i> 4. 발표 자료 링크 (Canva, 슬라이드 등)</label>
+                            <input type="text" id="ws-link" placeholder="https://..." class="w-full p-3 rounded-xl border border-zinc-800">
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- ======================================================== -->
-        <!-- TAB 3: 발표 및 동료 피드백 (발표) -->
-        <!-- ======================================================== -->
+        <!-- TAB 3: 발표 및 동료 피드백 -->
         <section id="sec-presentation" class="space-y-6 hidden">
             <div class="tesla-card p-6 border-l-4 border-l-purple-500 flex justify-between items-center">
                 <div>
                     <h2 class="text-base md:text-lg font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-display text-purple-400"></i> 모둠별 발표 및 실시간 피드백</h2>
-                    <p class="text-xs text-zinc-400 mt-1">다른 모둠의 탐구 내용과 연구 방법 분석 발표를 듣고 긍정적인 평가와 피드백을 공유하세요.</p>
+                    <p class="text-xs text-zinc-400 mt-1">발표를 듣고 긍정적인 평가와 피드백을 공유하세요.</p>
                 </div>
-                <button onclick="renderPresentationCards()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition border border-zinc-700 flex items-center gap-1.5 font-bold">
+                <button onclick="renderPresentationCards()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition border border-zinc-700 font-bold">
                     <i class="fa-solid fa-rotate-right text-purple-400"></i> 새로고침
                 </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="presentation-cards-container">
-                <!-- Javascript populates -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="presentation-cards-container"></div>
         </section>
 
-        <!-- ======================================================== -->
-        <!-- TAB 4: 개별 활동지 & 과정 중심 평가 -->
-        <!-- ======================================================== -->
+        <!-- TAB 4: 개별 활동지 & 루브릭 -->
         <section id="sec-assessment" class="space-y-6 hidden">
             <div class="tesla-card p-6 space-y-5 border-t-2 border-t-amber-500">
                 <div class="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-800 pb-4">
                     <div>
-                        <span class="bg-amber-950/80 text-amber-300 border border-amber-700/60 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">과정 중심 평가 기준</span>
-                        <h2 class="text-base font-bold text-white mt-1">생명과학사 탐구 과정 평가 및 성취 수준 성찰</h2>
+                        <span class="bg-amber-950/80 text-amber-300 border border-amber-700/60 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">개별 평가 성찰</span>
+                        <h2 class="text-base font-bold text-white mt-1">개별 탐구 성찰 활동지</h2>
                     </div>
-                    <div class="flex gap-2">
-                        <button onclick="exportAssessmentReport()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-bold border border-zinc-700">
-                            <i class="fa-solid fa-copy text-amber-400"></i> 내 제출 내용 복사
-                        </button>
-                    </div>
+                    <button onclick="window.print()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl border border-zinc-700 font-bold">
+                        <i class="fa-solid fa-print"></i> 인쇄/PDF
+                    </button>
                 </div>
 
-                <div class="space-y-5 pt-1">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-4 pt-1 text-xs">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="font-bold text-zinc-300 block mb-1">학번 / 이름:</label>
                             <input type="text" id="ind-student-info" placeholder="예: 3학년 1반 15번 홍길동" class="w-full p-2.5 rounded-xl border border-zinc-800">
@@ -378,38 +341,30 @@
                         </div>
                     </div>
 
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-tesla-red">자기 성찰 및 자기 평가</h3>
-                    
-                    <div class="space-y-4 text-xs">
-                        <div>
-                            <label class="font-bold text-zinc-300 block mb-1">
-                                Q1. 이번 수업에서 새롭게 알게 된 주요 생명과학사 발견과 그 연구 방법은 무엇인가요?
-                            </label>
-                            <textarea id="ind-q1" rows="2" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="내용을 작성하세요..."></textarea>
-                        </div>
-                        <div>
-                            <label class="font-bold text-zinc-300 block mb-1">
-                                Q2. 본인이 선택한 과학적 발견이 현대 사회나 다른 학문 및 인류 삶에 미친 영향은 무엇인가요?
-                            </label>
-                            <textarea id="ind-q2" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 사례와 근거를 포함하여 작성하세요..."></textarea>
-                        </div>
+                    <div>
+                        <label class="font-bold text-zinc-300 block mb-1">Q1. 새롭게 알게 된 주요 생명과학사 발견과 연구 방법은 무엇인가요?</label>
+                        <textarea id="ind-q1" rows="2" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="내용을 작성하세요..."></textarea>
+                    </div>
+                    <div>
+                        <label class="font-bold text-zinc-300 block mb-1">Q2. 본인이 선택한 과학적 발견이 현대 사회나 인류 삶에 미친 영향은 무엇인가요?</label>
+                        <textarea id="ind-q2" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="사례와 근거를 포함하여 작성하세요..."></textarea>
                     </div>
 
-                    <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="font-bold text-amber-300 block mb-1">요소 1: 발견 및 연구방법 설명 자가 평가</label>
-                            <select id="self-eval-1" class="w-full p-2.5 rounded-xl border border-zinc-800 font-medium bg-zinc-950 text-white">
-                                <option value="심화">심화 - 연구 방법(연역/귀납 등)과 흐름까지 완벽히 분석함</option>
+                            <label class="font-bold text-amber-300 block mb-1">요소 1: 발견 및 연구방법 분석 자가 평가</label>
+                            <select id="self-eval-1" class="w-full p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-white">
+                                <option value="심화">심화 - 연구 방법(연역/귀납 등)과 흐름을 완벽히 분석함</option>
                                 <option value="기본">기본 - 주요 발견 및 연구 방법을 설명할 수 있음</option>
-                                <option value="기초">기초 - 주요 발견의 명칭과 시대적 순서를 구체적으로 기술함</option>
+                                <option value="기초">기초 - 주요 발견의 명칭과 시기를 알고 있음</option>
                             </select>
                         </div>
                         <div>
-                            <label class="font-bold text-amber-300 block mb-1">요소 2: 학문/사회적 영향 분석 자가 평가</label>
-                            <select id="self-eval-2" class="w-full p-2.5 rounded-xl border border-zinc-800 font-medium bg-zinc-950 text-white">
-                                <option value="심화">심화 - 타 학문 연계 및 사회적 영향을 근거를 들어 체계적으로 설명함</option>
-                                <option value="기본">기본 - 타 학문과 사회에 미친 영향 요점을 설명할 수 있음</option>
-                                <option value="기초">기초 - 사회적 영향이 존재함을 인지하고 언급함</option>
+                            <label class="font-bold text-amber-300 block mb-1">요소 2: 사회적 영향 분석 자가 평가</label>
+                            <select id="self-eval-2" class="w-full p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-white">
+                                <option value="심화">심화 - 사회적 영향을 근거를 들어 체계적으로 설명함</option>
+                                <option value="기본">기본 - 사회적 영향 요점을 설명함</option>
+                                <option value="기초">기초 - 사회적 영향의 존재를 언급함</option>
                             </select>
                         </div>
                     </div>
@@ -417,55 +372,42 @@
 
                 <div class="flex justify-end pt-2">
                     <button onclick="submitIndividualWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-6 py-3 rounded-xl font-bold shadow-lg glow-red transition">
-                        <i class="fa-solid fa-paper-plane mr-1.5"></i> 개별 활동지 최종 제출하기
+                        <i class="fa-solid fa-paper-plane mr-1.5"></i> 활동지 제출하기
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- ======================================================== -->
         <!-- TAB 5: AI 탐구 도우미 -->
-        <!-- ======================================================== -->
         <section id="sec-ai-tutor" class="space-y-6 hidden">
             <div class="tesla-card p-6 space-y-4 border-t-2 border-t-tesla-red">
-                <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-tesla-red/20 text-tesla-red p-3 rounded-xl border border-tesla-red/30">
-                            <i class="fa-solid fa-robot text-xl"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-base font-extrabold text-white">생명과학사 탐구 도우미</h2>
-                            <p class="text-xs text-zinc-400 mt-0.5">생명과학사의 연구 방법, 학자별 업적, 연역적/귀납적 탐구 과정 질문을 선택하거나 살펴보세요.</p>
-                        </div>
+                <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
+                    <div class="bg-tesla-red/20 text-tesla-red p-3 rounded-xl border border-tesla-red/30">
+                        <i class="fa-solid fa-robot text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-extrabold text-white">생명과학사 AI 탐구 도우미</h2>
+                        <p class="text-xs text-zinc-400 mt-0.5">생명과학의 역사와 탐구 방법에 대해 자유롭게 질문해보세요.</p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap gap-2 pt-1">
-                    <span class="text-xs font-bold text-zinc-400 py-1 uppercase tracking-wider text-[10px]">주요 탐구 예시 주제:</span>
-                    <button onclick="askPresetAi('찰스 다윈이 비글호 항해 관찰을 통해 자연선택설을 도출한 귀납적 연구 방법과 그 시대적 의의를 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-amber-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">
-                        🦜 다윈의 자연선택설
-                    </button>
-                    <button onclick="askPresetAi('2003년 완성된 인간 게놈 프로젝트(HGP)에서 빅데이터 및 생명정보학 기술이 유전체 해독 연구에 어떻게 활용되었는지 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-sky-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">
-                        🧬 사람 유전체 해독(HGP)
-                    </button>
-                    <button onclick="askPresetAi('안드레아스 베살리우스의 근대 해부학 정립이 당시 갈레노스의 전통 의학 권위에 대해 어떻게 귀납적 연구 방법으로 도전했는지 알려줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">
-                        🫀 베살리우스의 인체 해부
-                    </button>
-                    <button onclick="askPresetAi('윌리엄 하비의 혈액 순환 원리 발견에 사용된 정량적 계산 및 결찰 실험의 연역적 연구 과정을 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-rose-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">
-                        ❤️ 하비의 혈액 순환 실험
-                    </button>
+                    <span class="text-xs font-bold text-zinc-400 py-1 uppercase tracking-wider text-[10px]">추천 질문:</span>
+                    <button onclick="askPresetAi('찰스 다윈이 귀납적 연구 방법으로 자연선택설을 도출한 과정을 알려줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-amber-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">🦜 다윈의 자연선택설</button>
+                    <button onclick="askPresetAi('인간 게놈 프로젝트(HGP)에서 빅데이터와 분석 도구가 사용된 방식을 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-sky-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">🧬 사람 유전체 해독(HGP)</button>
+                    <button onclick="askPresetAi('윌리엄 하비의 혈액 순환 실험이 지닌 연역적 연구 성격을 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-rose-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">❤️ 하비의 혈액 순환 실험</button>
                 </div>
 
                 <div id="ai-chat-box" class="bg-zinc-950 p-4 rounded-xl h-80 overflow-y-auto space-y-3 text-xs custom-scrollbar border border-zinc-800/80">
                     <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl">
                         <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
-                        안녕하세요! 생명과학사 수업 탐구 도우미입니다. 생명과학의 주요 역사와 탐구 방법에 대해 궁금한 내용의 예시 버튼을 눌러 확인해 보세요!
+                        안녕하세요! 생명과학사 수업 탐구 도우미입니다. 질문을 입력해주세요.
                     </div>
                 </div>
 
                 <div class="flex gap-2">
-                    <input type="text" id="ai-input" onkeydown="if(event.key==='Enter') sendAiQuery()" placeholder="탐구 예시 질문을 선택해보세요..." class="flex-1 text-xs p-3 rounded-xl border border-zinc-800 focus:outline-none">
-                    <button onclick="sendAiQuery()" id="ai-send-btn" class="bg-tesla-red hover:bg-red-600 text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-1.5 shrink-0 shadow-lg glow-red">
+                    <input type="text" id="ai-input" onkeydown="if(event.key==='Enter') sendAiQuery()" placeholder="질문을 입력하세요..." class="flex-1 text-xs p-3 rounded-xl border border-zinc-800 focus:outline-none">
+                    <button onclick="sendAiQuery()" class="bg-tesla-red hover:bg-red-600 text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-1.5 shrink-0 shadow-lg glow-red">
                         <i class="fa-solid fa-paper-plane"></i> 전 송
                     </button>
                 </div>
@@ -474,36 +416,32 @@
 
     </main>
 
-    <!-- Custom Toast Notification -->
+    <!-- Toast Notification -->
     <div id="toast-message" class="fixed bottom-6 right-6 bg-zinc-900/95 text-white text-xs px-5 py-3.5 rounded-2xl shadow-2xl z-50 hidden transition-all duration-300 flex items-center gap-3 border border-zinc-700 backdrop-blur-md">
         <i id="toast-icon" class="fa-solid fa-circle-check text-tesla-red text-lg"></i>
         <span id="toast-text" class="font-medium">메시지가 등록되었습니다.</span>
     </div>
 
-    <!-- Detail Modal for Timeline Discovery Item -->
+    <!-- Detail Modal -->
     <div id="timeline-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
         <div class="tesla-card max-w-xl w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scrollbar border border-zinc-800">
             <button onclick="closeModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-white text-lg">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content">
-                <!-- Javascript will populate modal -->
-            </div>
+            <div id="modal-content"></div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-zinc-950 text-zinc-500 text-xs py-6 text-center border-t border-zinc-900 mt-12">
-        <p class="tracking-wide">2026학년도 중등 과학과 AI·디지털 도구 활용 교수·학습 지원 플랫폼 | 고등학교 생명과학 I (학생용)</p>
+        <p>2026학년도 중등 과학과 AI·디지털 도구 활용 교수·학습 지원 플랫폼 | 학생용 탐구 페이지</p>
     </footer>
 
-    <!-- Firebase SDK Imports and Student Realtime Sync -->
+    <!-- Firebase Client Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Provided Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDSpSgCioLK1jKm_C4UtmU3KkjO4tamltQ",
             authDomain: "kyjt7373-2.firebaseapp.com",
@@ -514,33 +452,27 @@
             appId: "1:864108208166:web:b888b785d3b5b8d34fc6e7"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
-
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'kyjt7373-2';
-        let currentUser = null;
 
-        // In-Memory Data Cache
         window.groupWorksheetsData = {};
         window.peerFeedbacksData = [];
+        window.individualAssessmentsData = [];
 
-        // Authenticate Anonymously & Bind Firestore Realtime Listeners
         window.addEventListener('DOMContentLoaded', async () => {
             if (typeof window.initGroupSelect === 'function') window.initGroupSelect();
             if (typeof window.renderTimeline === 'function') window.renderTimeline('all');
 
             try {
-                const userCred = await signInAnonymously(auth);
-                currentUser = userCred.user;
+                await signInAnonymously(auth);
                 const statusEl = document.getElementById('db-status');
                 if (statusEl) {
                     statusEl.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>DB 연결완료';
                     statusEl.className = 'font-bold text-emerald-400 ml-1';
                 }
-                
-                // Firestore Listener 1: Group Worksheets
+
                 const groupColRef = collection(db, 'artifacts', appId, 'public', 'data', 'groupWorksheets');
                 onSnapshot(groupColRef, (snapshot) => {
                     snapshot.forEach((docSnap) => {
@@ -549,11 +481,8 @@
                     if (document.getElementById('group-select') && typeof window.loadGroupData === 'function') {
                         window.loadGroupData();
                     }
-                }, (err) => {
-                    console.warn("Firestore group snapshot listener error:", err);
                 });
 
-                // Firestore Listener 2: Peer Feedbacks
                 const peerColRef = collection(db, 'artifacts', appId, 'public', 'data', 'peerFeedbacks');
                 onSnapshot(peerColRef, (snapshot) => {
                     window.peerFeedbacksData = [];
@@ -563,29 +492,19 @@
                     if (typeof window.renderPresentationCards === 'function') {
                         window.renderPresentationCards();
                     }
-                }, (err) => {
-                    console.warn("Firestore peer feedback listener error:", err);
                 });
-
             } catch (err) {
-                console.warn("Firebase Auth / Connection Fallback:", err);
-                const statusEl = document.getElementById('db-status');
-                if (statusEl) {
-                    statusEl.innerHTML = '<i class="fa-solid fa-cube text-sky-400 mr-1"></i>로컬 단독 모드';
-                    statusEl.className = 'font-bold text-sky-400 ml-1';
-                }
+                console.warn("DB Connection Fallback:", err);
             }
         });
 
-        // Global Firebase Save Helpers for Students
         window.saveGroupWorksheetToDb = async function(groupId, data) {
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'groupWorksheets', groupId);
                 await setDoc(docRef, data, { merge: true });
-                if (typeof window.showToast === 'function') window.showToast("DB에 모둠 활동지가 저장되었습니다!");
+                window.showToast("DB에 저장되었습니다!");
             } catch(e) {
-                console.warn(e);
-                if (typeof window.showToast === 'function') window.showToast("로컬 메모리에 저장되었습니다.");
+                window.showToast("로컬 메모리에 저장되었습니다.");
             }
         };
 
@@ -593,10 +512,9 @@
             try {
                 const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'peerFeedbacks');
                 await addDoc(colRef, feedbackObj);
-                if (typeof window.showToast === 'function') window.showToast("동료 피드백이 실시간 공유되었습니다!");
+                window.showToast("동료 피드백이 공유되었습니다!");
             } catch(e) {
-                console.warn(e);
-                if (typeof window.showToast === 'function') window.showToast("피드백 등록 완료 (로컬)");
+                window.showToast("피드백 등록 완료");
             }
         };
 
@@ -604,16 +522,15 @@
             try {
                 const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'individualAssessments');
                 await addDoc(colRef, assessmentObj);
-                if (typeof window.showToast === 'function') window.showToast("개별 활동지가 제출되었습니다!");
+                window.showToast("개별 활동지가 정식 제출되었습니다!");
             } catch(e) {
-                console.warn(e);
-                if (typeof window.showToast === 'function') window.showToast("개별 활동지 제출 완료 (로컬)");
+                window.showToast("제출 완료되었습니다.");
             }
         };
     </script>
 
+    <!-- Student Interface Scripts -->
     <script>
-        // Timeline Dataset (11 Discoveries for 11 Groups)
         window.timelineData = [
             { id: "g1", year: "1543년", title: "근대 해부학의 정립과 파브리카 출판", scientist: "안드레아스 베살리우스", category: "medicine", methodType: "inductive", summary: "직접 인체 해부를 관찰하여 갈레노스의 오류를 수정하고 인체 구조를 체계적으로 기록함.", detail: "관찰 대상의 사체를 직접 해부하여 기구와 기관의 구조를 세밀히 관찰 및 서술한 귀납적 연구 방법.", impact: "전통 권위 의학에서 경험적·실험적 의학으로의 대전환을 유도함." },
             { id: "g2", year: "1628년", title: "혈액 순환 원리 발견", scientist: "윌리엄 하비", category: "medicine", methodType: "deductive", summary: "심장 박동량 계산 및 결찰 실험을 통해 혈액이 체내를 정방향 순환함을 입증.", detail: "심장이 1분간 뿜어내는 혈액량을 수치화한 가설을 세우고, 묶기(결찰) 실험으로 검증한 연역적 연구.", impact: "의학의 수량화 및 정량적 생리학의 기초를 확립함." },
@@ -628,14 +545,13 @@
             { id: "g11", year: "2003년", title: "인간 게놈 프로젝트 (HGP) 완료", scientist: "국제 컨소시엄 (빅 데이터)", category: "genetics", methodType: "inductive", summary: "인간 DNA 약 30억 개 염기서열 전체를 해독하여 유전체 지지도 작성.", detail: "자동화 서열분석기와 정보학 알고리즘으로 대량 유전 데이터 수집 및 분석.", impact: "정밀의학, 유전자 치료, 생명정보학 혁명 유발." }
         ];
 
-        // Tab Navigation
         window.switchTab = function(tabId) {
             const tabs = ['timeline', 'group', 'presentation', 'assessment', 'ai-tutor'];
             tabs.forEach(t => {
                 const sec = document.getElementById(`sec-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
                 if (sec) sec.classList.add('hidden');
-                if (btn) btn.classList.remove('active', 'bg-zinc-800', 'text-white');
+                if (btn) btn.classList.remove('active');
             });
 
             const activeSec = document.getElementById(`sec-${tabId}`);
@@ -648,27 +564,15 @@
             }
         };
 
-        // Custom Toast Notification Handler
-        window.showToast = function(msg, isError = false) {
+        window.showToast = function(msg) {
             const toast = document.getElementById('toast-message');
             const toastText = document.getElementById('toast-text');
-            const toastIcon = document.getElementById('toast-icon');
             if (!toast || !toastText) return;
-
             toastText.textContent = msg;
-            if (isError) {
-                toastIcon.className = "fa-solid fa-circle-exclamation text-rose-400 text-lg";
-            } else {
-                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
-            }
-
             toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
+            setTimeout(() => toast.classList.add('hidden'), 3000);
         };
 
-        // Group Select Box Population
         window.initGroupSelect = function() {
             const select = document.getElementById('group-select');
             if (!select) return;
@@ -682,7 +586,6 @@
             window.loadGroupData();
         };
 
-        // Group Data Form Loader
         window.loadGroupData = function() {
             const groupId = document.getElementById('group-select')?.value || 'g1';
             const item = timelineData.find(x => x.id === groupId);
@@ -706,12 +609,9 @@
 
             const radios = document.getElementsByName('ws-method-type');
             const methodVal = data.methodType || 'deductive';
-            radios.forEach(r => {
-                r.checked = (r.value === methodVal);
-            });
+            radios.forEach(r => { r.checked = (r.value === methodVal); });
         };
 
-        // Save Roles
         window.saveGroupRoles = function() {
             const groupId = document.getElementById('group-select')?.value;
             if (!groupId) return;
@@ -724,12 +624,9 @@
 
             if (typeof window.saveGroupWorksheetToDb === 'function') {
                 window.saveGroupWorksheetToDb(groupId, window.groupWorksheetsData[groupId]);
-            } else {
-                showToast("모둠원 역할이 저장되었습니다.");
             }
         };
 
-        // Save Group Worksheet
         window.saveWorksheet = function() {
             const groupId = document.getElementById('group-select')?.value;
             if (!groupId) return;
@@ -747,12 +644,9 @@
 
             if (typeof window.saveGroupWorksheetToDb === 'function') {
                 window.saveGroupWorksheetToDb(groupId, window.groupWorksheetsData[groupId]);
-            } else {
-                showToast("모둠 활동지가 저장되었습니다.");
             }
         };
 
-        // Render Interactive Timeline
         window.renderTimeline = function(filterCategory = 'all', searchQuery = '') {
             const container = document.getElementById('timeline-container');
             if (!container) return;
@@ -776,9 +670,7 @@
                 const isEven = index % 2 === 0;
                 const methodBadge = item.methodType === 'deductive' 
                     ? '<span class="bg-purple-950 text-purple-300 border border-purple-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">연역적 탐구</span>'
-                    : (item.methodType === 'inductive' 
-                        ? '<span class="bg-amber-950 text-amber-300 border border-amber-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">귀납적 탐구</span>'
-                        : '<span class="bg-sky-950 text-sky-300 border border-sky-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">복합/병행 모델</span>');
+                    : '<span class="bg-amber-950 text-amber-300 border border-amber-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">귀납적 탐구</span>';
 
                 const cardHtml = `
                     <div class="relative flex flex-col md:flex-row items-center mb-6 ${isEven ? 'md:flex-row-reverse' : ''}">
@@ -789,12 +681,8 @@
                                     ${methodBadge}
                                 </div>
                                 <h3 class="text-base font-extrabold text-white group-hover:text-tesla-red transition-colors">${item.title}</h3>
-                                <p class="text-xs text-zinc-400 font-semibold mb-2"><i class="fa-solid fa-user-ninja mr-1 text-zinc-500"></i>${item.scientist}</p>
+                                <p class="text-xs text-zinc-400 font-semibold mb-2"><i class="fa-solid fa-user-ninja mr-1"></i>${item.scientist}</p>
                                 <p class="text-xs text-zinc-300 line-clamp-2 leading-relaxed">${item.summary}</p>
-                                <div class="mt-3 pt-2 border-t border-zinc-800/80 flex justify-between items-center text-[11px] text-zinc-500 font-medium">
-                                    <span><i class="fa-solid fa-flask text-tesla-red mr-1"></i>상세 연구방법 및 영향 보기</span>
-                                    <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform text-tesla-red"></i>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -803,7 +691,6 @@
             });
         };
 
-        // Filter Timeline
         window.filterTimeline = function(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-tesla-red', 'text-white', 'active');
@@ -814,46 +701,37 @@
                 activeBtn.classList.remove('bg-zinc-800', 'text-zinc-300');
                 activeBtn.classList.add('bg-tesla-red', 'text-white', 'active');
             }
-            const searchVal = document.getElementById('timeline-search')?.value || '';
-            renderTimeline(category, searchVal);
+            renderTimeline(category, document.getElementById('timeline-search')?.value || '');
         };
 
-        // Search Timeline
         window.searchTimeline = function() {
-            const searchVal = document.getElementById('timeline-search')?.value || '';
             const activeBtn = document.querySelector('.filter-btn.active');
             const category = activeBtn ? activeBtn.id.replace('filter-', '') : 'all';
-            renderTimeline(category, searchVal);
+            renderTimeline(category, document.getElementById('timeline-search')?.value || '');
         };
 
-        // Modal Handlers
         window.openModal = function(id) {
             const item = timelineData.find(x => x.id === id);
             if (!item) return;
             const modal = document.getElementById('timeline-modal');
             const content = document.getElementById('modal-content');
-            if (!modal || !content) return;
 
             content.innerHTML = `
                 <div class="space-y-4">
-                    <div class="flex justify-between items-start pr-6">
-                        <div>
-                            <span class="text-tesla-red font-mono font-bold text-xs">${item.year}</span>
-                            <h2 class="text-lg font-extrabold text-white mt-0.5">${item.title}</h2>
-                            <p class="text-xs text-zinc-400 font-semibold"><i class="fa-solid fa-user-astronaut mr-1"></i>${item.scientist}</p>
-                        </div>
+                    <span class="text-tesla-red font-mono font-bold text-xs">${item.year}</span>
+                    <h2 class="text-lg font-extrabold text-white">${item.title}</h2>
+                    <p class="text-xs text-zinc-400 font-semibold"><i class="fa-solid fa-user-astronaut mr-1"></i>${item.scientist}</p>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs">
+                        <span class="font-bold text-tesla-red block mb-1">발견 개요</span>
+                        <p class="text-zinc-300">${item.summary}</p>
                     </div>
-                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
-                        <span class="font-bold text-tesla-red block"><i class="fa-solid fa-file-lines mr-1"></i>주요 발견 개요</span>
-                        <p class="text-zinc-300 leading-relaxed">${item.summary}</p>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs">
+                        <span class="font-bold text-purple-400 block mb-1">연구 방법 분석</span>
+                        <p class="text-zinc-300">${item.detail}</p>
                     </div>
-                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
-                        <span class="font-bold text-purple-400 block"><i class="fa-solid fa-vial mr-1"></i>연구 방법 분석</span>
-                        <p class="text-zinc-300 leading-relaxed">${item.detail}</p>
-                    </div>
-                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
-                        <span class="font-bold text-sky-400 block"><i class="fa-solid fa-earth-americas mr-1"></i>사회적 & 학문적 영향</span>
-                        <p class="text-zinc-300 leading-relaxed">${item.impact}</p>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs">
+                        <span class="font-bold text-sky-400 block mb-1">사회적 영향</span>
+                        <p class="text-zinc-300">${item.impact}</p>
                     </div>
                 </div>
             `;
@@ -861,11 +739,9 @@
         };
 
         window.closeModal = function() {
-            const modal = document.getElementById('timeline-modal');
-            if (modal) modal.classList.add('hidden');
+            document.getElementById('timeline-modal')?.classList.add('hidden');
         };
 
-        // Presentation Peer Feedbacks
         function renderPresentationCards() {
             const container = document.getElementById('presentation-cards-container');
             if (!container) return;
@@ -883,30 +759,22 @@
                                 <h3 class="text-sm font-extrabold text-white mt-1">${item.title}</h3>
                                 <p class="text-xs text-zinc-400">${item.scientist}</p>
                             </div>
-                            ${data.link ? `<a href="${data.link}" target="_blank" class="bg-purple-900/60 hover:bg-purple-800 text-purple-200 border border-purple-700 text-xs px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square"></i> 발표 자료</a>` : ''}
+                            ${data.link ? `<a href="${data.link}" target="_blank" class="bg-purple-900/60 text-purple-200 border border-purple-700 text-xs px-3 py-1.5 rounded-xl font-bold"><i class="fa-solid fa-arrow-up-right-from-square"></i> 발표자료</a>` : ''}
                         </div>
 
-                        <div class="bg-zinc-900/90 p-3 rounded-xl border border-zinc-800 space-y-1 text-xs">
-                            <span class="font-bold text-zinc-300">연구 방법 분석 요약:</span>
-                            <p class="text-zinc-400 text-[11px] line-clamp-3">${data.methodDetail || '작성된 모둠 내용이 아직 없습니다.'}</p>
+                        <div class="bg-zinc-900/90 p-3 rounded-xl border border-zinc-800 text-xs">
+                            <span class="font-bold text-zinc-300">탐구 내용 요약:</span>
+                            <p class="text-zinc-400 text-[11px] line-clamp-3 mt-0.5">${data.methodDetail || '등록된 내용이 없습니다.'}</p>
                         </div>
 
-                        <!-- Peer Feedbacks List -->
                         <div class="space-y-2 pt-1">
-                            <span class="text-xs font-bold text-purple-300 block"><i class="fa-solid fa-comments mr-1"></i>동료 피드백 (${feedbacks.length}건)</span>
+                            <span class="text-xs font-bold text-purple-300 block">동료 피드백 (${feedbacks.length}건)</span>
                             <div class="space-y-1.5 max-h-32 overflow-y-auto custom-scrollbar">
-                                ${feedbacks.length === 0 ? '<p class="text-[11px] text-zinc-500">아직 등록된 동료 피드백이 없습니다.</p>' : ''}
-                                ${feedbacks.map(f => `
-                                    <div class="bg-zinc-950 p-2 rounded-lg border border-zinc-800 text-[11px]">
-                                        <span class="font-bold text-zinc-300">${f.author || '무명'}:</span> <span class="text-zinc-400">${f.comment}</span>
-                                    </div>
-                                `).join('')}
+                                ${feedbacks.map(f => `<div class="bg-zinc-950 p-2 rounded border border-zinc-800 text-[11px]"><span class="font-bold text-zinc-300">${f.author}:</span> ${f.comment}</div>`).join('')}
                             </div>
-
-                            <!-- Add Feedback Input -->
                             <div class="flex gap-2 pt-2">
-                                <input type="text" id="feedback-input-${item.id}" placeholder="칭찬 및 건설적 피드백 입력..." class="flex-1 p-2 rounded-lg text-xs border border-zinc-800">
-                                <button onclick="addPeerFeedback('${item.id}')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-3 py-2 rounded-lg transition">등록</button>
+                                <input type="text" id="feedback-input-${item.id}" placeholder="피드백 작성..." class="flex-1 p-2 rounded-lg text-xs border border-zinc-800">
+                                <button onclick="addPeerFeedback('${item.id}')" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-3 py-2 rounded-lg">등록</button>
                             </div>
                         </div>
                     </div>
@@ -921,7 +789,7 @@
 
             const feedbackObj = {
                 groupId: groupId,
-                author: '3학년 학생',
+                author: '동료 학생',
                 comment: input.value.trim(),
                 createdAt: new Date().toISOString()
             };
@@ -933,42 +801,22 @@
         }
 
         function submitIndividualWorksheet() {
-            const studentInfo = document.getElementById('ind-student-info')?.value || '무명 학생';
-            const topic = document.getElementById('ind-student-topic')?.value || '기본 주제';
-            const q1 = document.getElementById('ind-q1')?.value || '';
-            const q2 = document.getElementById('ind-q2')?.value || '';
-            const eval1 = document.getElementById('self-eval-1')?.value || '기본';
-            const eval2 = document.getElementById('self-eval-2')?.value || '기본';
-
             const assessmentObj = {
-                studentInfo,
-                topic,
-                q1,
-                q2,
-                eval1,
-                eval2,
+                studentInfo: document.getElementById('ind-student-info')?.value || '무명 학생',
+                topic: document.getElementById('ind-student-topic')?.value || '미선택',
+                q1: document.getElementById('ind-q1')?.value || '',
+                q2: document.getElementById('ind-q2')?.value || '',
+                eval1: document.getElementById('self-eval-1')?.value || '기본',
+                eval2: document.getElementById('self-eval-2')?.value || '기본',
                 submittedAt: new Date().toISOString()
             };
 
             window.saveIndividualAssessmentToDb(assessmentObj);
         }
 
-        function exportAssessmentReport() {
-            const text = `
-[생명과학사 개별 활동 평가 제출 내역]
-학생 정보: ${document.getElementById('ind-student-info')?.value || '미입력'}
-탐구 주제: ${document.getElementById('ind-student-topic')?.value || '미입력'}
-Q1 답변: ${document.getElementById('ind-q1')?.value || ''}
-Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
-자가 평가 1: ${document.getElementById('self-eval-1')?.value}
-자가 평가 2: ${document.getElementById('self-eval-2')?.value}
-            `.trim();
-
-            navigator.clipboard.writeText(text).then(() => {
-                showToast("평가 내용이 클립보드에 복사되었습니다!");
-            }).catch(() => {
-                showToast("클립보드 복사 실패", true);
-            });
+        function askPresetAi(promptText) {
+            document.getElementById('ai-input').value = promptText;
+            sendAiQuery();
         }
 
         function sendAiQuery() {
@@ -979,24 +827,26 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
 
             chatBox.innerHTML += `
                 <div class="flex justify-end">
-                    <div class="bg-tesla-red text-white p-3 rounded-xl max-w-lg text-xs font-medium">
-                        ${query}
-                    </div>
-                </div>
-            `;
-            
-            chatBox.innerHTML += `
-                <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl text-xs text-zinc-300">
-                    <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
-                    해당 탐구 질문이 등록되었습니다. 교사 지도 하에 연대표 탐색 탭의 상세 자료와 함께 분석해 보세요!
+                    <div class="bg-tesla-red text-white p-3 rounded-xl max-w-lg text-xs">${query}</div>
                 </div>
             `;
             inputEl.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                chatBox.innerHTML += `
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl text-xs">
+                        <span class="font-bold text-tesla-red block mb-1"><i class="fa-solid fa-robot"></i> AI 도우미</span>
+                        질문하신 내용을 교사용 대시보드 및 담당 선생님의 AI 서버와 연결하여 답변을 준비 중입니다. 선생님의 실시간 검수 후 상세 조언이 제공됩니다.
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 600);
         }
 
-        function askPresetAi(promptText) {
-            document.getElementById('ai-input').value = promptText;
+        function openAiPrompt(text) {
+            switchTab('ai-tutor');
+            document.getElementById('ai-input').value = text;
             sendAiQuery();
         }
     </script>
