@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>생명과학의 역사 및 연구 방법 탐구 플랫폼 | TESLA DESIGN EDITION</title>
+    <title>생명과학의 역사 및 연구 방법 탐구 플랫폼 (학생용)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -53,10 +53,6 @@
         .tesla-card:hover {
             border-color: rgba(232, 33, 39, 0.3);
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(232, 33, 39, 0.15);
-        }
-        .tesla-card-active {
-            border-color: #e82127 !important;
-            box-shadow: 0 0 25px -5px rgba(232, 33, 39, 0.3);
         }
 
         /* Timeline Line Styling */
@@ -137,7 +133,6 @@
     <header class="bg-tesla-dark/95 border-b border-zinc-800/80 sticky top-0 z-50 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3.5">
-                <!-- Tesla Red Symbol Logo Badge -->
                 <div class="bg-tesla-red text-white p-2.5 rounded-xl shadow-lg glow-red flex items-center justify-center w-10 h-10 shrink-0 font-extrabold tracking-tighter">
                     <i class="fa-solid fa-dna text-lg"></i>
                 </div>
@@ -148,22 +143,20 @@
                         <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">3차시</span>
                     </div>
                     <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white mt-1 flex items-center gap-2">
-                        생명과학사 흐름 및 주요 발견의 연구 방법 분석
+                        생명과학사 흐름 및 주요 발견의 연구 방법 분석 (학생 탐구 공간)
                     </h1>
                 </div>
             </div>
 
-            <!-- Class & Teacher Info Badge -->
+            <!-- Class & Status Info Badge -->
             <div class="hidden lg:flex items-center gap-4 text-xs bg-zinc-900/90 px-4 py-2 rounded-xl border border-zinc-800">
-                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">상태:</span> <span id="db-status" class="font-bold text-amber-400 ml-1"><i class="fa-solid fa-spinner fa-spin mr-1"></i>DB 연결 중</span></div>
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">연결 상태:</span> <span id="db-status" class="font-bold text-amber-400 ml-1"><i class="fa-solid fa-spinner fa-spin mr-1"></i>DB 연결 중</span></div>
                 <div class="h-3 w-px bg-zinc-800"></div>
                 <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">지도교사:</span> <span class="font-bold text-white ml-1">김영주 선생님</span></div>
-                <div class="h-3 w-px bg-zinc-800"></div>
-                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">AI 엔진:</span> <span class="font-bold text-tesla-red ml-1">Gemini Flash</span></div>
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (Teacher Dashboard Tab Removed) -->
         <nav class="bg-zinc-950/60 border-t border-zinc-900/80 px-4 text-xs font-semibold text-zinc-400 overflow-x-auto custom-scrollbar">
             <div class="max-w-7xl mx-auto flex space-x-2 md:space-x-8 whitespace-nowrap">
                 <button onclick="switchTab('timeline')" id="tab-timeline" class="tab-btn py-3.5 px-1 flex items-center gap-2 active transition hover:text-white">
@@ -186,15 +179,10 @@
                     <i class="fa-solid fa-robot text-tesla-red"></i>
                     <span>AI 탐구 도우미</span>
                 </button>
-                <button onclick="switchTab('teacher')" id="tab-teacher" class="tab-btn py-3.5 px-1 flex items-center gap-2 transition text-white font-bold my-1 rounded-lg px-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700">
-                    <i class="fa-solid fa-user-shield text-tesla-red"></i>
-                    <span>🔒 교사용 대시보드</span>
-                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content Area -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
         <!-- ======================================================== -->
@@ -216,9 +204,6 @@
                         <i class="fa-solid fa-bullseye text-tesla-red"></i> 성취기준: 주요 발견의 시기별 나열 및 연구 방법(귀납적/연역적 탐구 등) 조사 분석
                     </p>
                 </div>
-                <button onclick="openAiPrompt('생명과학사에서 연역적 탐구와 귀납적 탐구가 각각 어떻게 활용되었는지 예시와 함께 알려줘')" class="relative z-10 bg-zinc-800 hover:bg-tesla-red text-white border border-zinc-700 hover:border-tesla-red text-xs font-bold px-4 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 shrink-0 shadow-lg">
-                    <i class="fa-solid fa-sparkles text-amber-300"></i> AI 연역/귀납 탐구 가이드
-                </button>
             </div>
 
             <!-- Filter & Search Controls -->
@@ -254,12 +239,12 @@
                 <div class="tesla-card p-5 space-y-4 lg:col-span-1 border-t-2 border-t-sky-500">
                     <div class="flex justify-between items-center">
                         <h2 class="text-sm font-extrabold text-white flex items-center gap-2 tracking-tight">
-                            <i class="fa-solid fa-users-gear text-sky-400"></i> 모둠 구성 및 주제 관리
+                            <i class="fa-solid fa-users-gear text-sky-400"></i> 모둠 구성 및 주제 선택
                         </h2>
                         <span class="text-[11px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded-full font-bold">11개 탐구 주제</span>
                     </div>
                     <p class="text-xs text-zinc-400">
-                        학생들의 관심 분야 및 사전 지식에 따라 모둠을 설정하고 역할(조장, 조사, 정리, 발표)을 분담하세요.
+                        소속된 모둠의 주제를 선택하고 모둠원 간의 역할(조장, 조사, 정리, 발표)을 입력 및 저장하세요.
                     </p>
 
                     <!-- Group Selector -->
@@ -294,11 +279,8 @@
                             <h2 id="current-group-title" class="text-base md:text-lg font-bold text-white mt-1">주제명</h2>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="aiHelpResearch()" class="bg-zinc-800 hover:bg-tesla-red text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-bold border border-zinc-700">
-                                <i class="fa-solid fa-robot text-amber-300"></i> AI 자료조사 보조
-                            </button>
-                            <button onclick="saveWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
-                                <i class="fa-solid fa-save"></i> 저 장
+                            <button onclick="saveWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
+                                <i class="fa-solid fa-save"></i> 활동지 제출 / 저장
                             </button>
                         </div>
                     </div>
@@ -338,7 +320,7 @@
 
                         <div>
                             <label class="font-bold text-zinc-300 block mb-1">
-                                <i class="fa-solid fa-link text-zinc-500 mr-1"></i> 4. 발표 자료 링크 (Canva, 슬라이드 등)
+                                <i class="fa-solid fa-link text-zinc-500 mr-1"></i> 4. 발표 자료 링크 (Canva, Google Slides 등)
                             </label>
                             <input type="text" id="ws-link" placeholder="https://canva.com/... 공유 링크 URL" class="w-full p-3 rounded-xl border border-zinc-800">
                         </div>
@@ -355,7 +337,7 @@
             <div class="tesla-card p-6 border-l-4 border-l-purple-500 flex justify-between items-center">
                 <div>
                     <h2 class="text-base md:text-lg font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-display text-purple-400"></i> 모둠별 발표 및 실시간 피드백</h2>
-                    <p class="text-xs text-zinc-400 mt-1">각 모둠의 탐구 내용과 연구 방법 분석 발표를 듣고 동료 피드백을 등록하세요.</p>
+                    <p class="text-xs text-zinc-400 mt-1">다른 모둠의 탐구 내용과 연구 방법 분석 발표를 듣고 긍정적인 평가와 피드백을 공유하세요.</p>
                 </div>
                 <button onclick="renderPresentationCards()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition border border-zinc-700 flex items-center gap-1.5 font-bold">
                     <i class="fa-solid fa-rotate-right text-purple-400"></i> 새로고침
@@ -378,11 +360,8 @@
                         <h2 class="text-base font-bold text-white mt-1">생명과학사 탐구 과정 평가 및 성취 수준 성찰</h2>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="window.print()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-zinc-700 font-bold">
-                            <i class="fa-solid fa-print"></i> 인쇄/PDF
-                        </button>
                         <button onclick="exportAssessmentReport()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-bold border border-zinc-700">
-                            <i class="fa-solid fa-file-export text-tesla-red"></i> 개별 평가서 복사
+                            <i class="fa-solid fa-copy text-amber-400"></i> 내 제출 내용 복사
                         </button>
                     </div>
                 </div>
@@ -455,14 +434,14 @@
                             <i class="fa-solid fa-robot text-xl"></i>
                         </div>
                         <div>
-                            <h2 class="text-base font-extrabold text-white">생명과학사 AI 탐구 도우미 (Gemini Flash API)</h2>
-                            <p class="text-xs text-zinc-400 mt-0.5">생명과학사의 연구 방법, 학자별 업적, 연역적/귀납적 탐구 과정에 대해 자유롭게 질문해보세요.</p>
+                            <h2 class="text-base font-extrabold text-white">생명과학사 탐구 도우미</h2>
+                            <p class="text-xs text-zinc-400 mt-0.5">생명과학사의 연구 방법, 학자별 업적, 연역적/귀납적 탐구 과정 질문을 선택하거나 살펴보세요.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap gap-2 pt-1">
-                    <span class="text-xs font-bold text-zinc-400 py-1 uppercase tracking-wider text-[10px]">추천 탐구 질문:</span>
+                    <span class="text-xs font-bold text-zinc-400 py-1 uppercase tracking-wider text-[10px]">주요 탐구 예시 주제:</span>
                     <button onclick="askPresetAi('찰스 다윈이 비글호 항해 관찰을 통해 자연선택설을 도출한 귀납적 연구 방법과 그 시대적 의의를 설명해줘.')" class="bg-zinc-900 hover:bg-zinc-800 text-amber-300 border border-zinc-800 text-xs px-3 py-1 rounded-full transition">
                         🦜 다윈의 자연선택설
                     </button>
@@ -480,163 +459,15 @@
                 <div id="ai-chat-box" class="bg-zinc-950 p-4 rounded-xl h-80 overflow-y-auto space-y-3 text-xs custom-scrollbar border border-zinc-800/80">
                     <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl">
                         <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
-                        안녕하세요! 생명과학사 수업 탐구 도우미입니다. 생명과학의 주요 역사와 탐구 방법에 대해 물어보세요!
+                        안녕하세요! 생명과학사 수업 탐구 도우미입니다. 생명과학의 주요 역사와 탐구 방법에 대해 궁금한 내용의 예시 버튼을 눌러 확인해 보세요!
                     </div>
                 </div>
 
                 <div class="flex gap-2">
-                    <input type="text" id="ai-input" onkeydown="if(event.key==='Enter') sendAiQuery()" placeholder="질문을 입력하세요..." class="flex-1 text-xs p-3 rounded-xl border border-zinc-800 focus:outline-none">
+                    <input type="text" id="ai-input" onkeydown="if(event.key==='Enter') sendAiQuery()" placeholder="탐구 예시 질문을 선택해보세요..." class="flex-1 text-xs p-3 rounded-xl border border-zinc-800 focus:outline-none">
                     <button onclick="sendAiQuery()" id="ai-send-btn" class="bg-tesla-red hover:bg-red-600 text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-1.5 shrink-0 shadow-lg glow-red">
                         <i class="fa-solid fa-paper-plane"></i> 전 송
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================== -->
-        <!-- TAB 6: 교사용 대시보드 (🔒 비밀번호 및 관리 기능) -->
-        <!-- ======================================================== -->
-        <section id="sec-teacher" class="space-y-6 hidden">
-            <!-- Password Auth Lock Overlay -->
-            <div id="teacher-auth-card" class="tesla-card p-8 rounded-2xl max-w-md mx-auto text-center space-y-4 shadow-2xl border-t-2 border-t-tesla-red my-8">
-                <div class="bg-tesla-red/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-tesla-red text-2xl border border-tesla-red/30 shadow-inner">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div>
-                    <h2 class="text-base font-bold text-white">교사 전용 대시보드 인증</h2>
-                    <p class="text-xs text-zinc-400 mt-1">학생 합의안 피드백 관리 및 결과물 CSV 출력을 위해 비밀번호를 입력하세요.</p>
-                </div>
-
-                <div class="space-y-3 pt-2">
-                    <input type="password" id="teacher-pw-input" onkeydown="if(event.key==='Enter') verifyTeacherPassword()" placeholder="비밀번호 입력 (초기 암호: 1234)" class="w-full text-center text-sm p-3 rounded-xl border border-zinc-800 font-mono tracking-widest">
-                    <p id="pw-error-msg" class="text-xs text-rose-400 hidden font-semibold"><i class="fa-solid fa-circle-exclamation mr-1"></i> 비밀번호가 일치하지 않습니다.</p>
-                    <button onclick="verifyTeacherPassword()" class="w-full bg-tesla-red hover:bg-red-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg glow-red transition">
-                        <i class="fa-solid fa-key mr-1.5"></i> 대시보드 잠금 해제
-                    </button>
-                </div>
-                <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800 text-[11px] text-zinc-400 text-left">
-                    <i class="fa-solid fa-circle-info text-tesla-red mr-1"></i> 기본 비밀번호는 <code class="font-bold bg-zinc-800 text-white px-1.5 py-0.5 rounded border border-zinc-700">1234</code> 입니다. 접속 후 암호를 변경할 수 있습니다.
-                </div>
-            </div>
-
-            <!-- Dashboard Content (Hidden until unlocked) -->
-            <div id="teacher-dashboard-content" class="space-y-6 hidden">
-                <!-- Top Summary Banner -->
-                <div class="tesla-card p-6 flex flex-wrap justify-between items-center gap-4 border-l-4 border-l-tesla-red">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-700 text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider"><i class="fa-solid fa-circle-check mr-1"></i> 실시간 관제</span>
-                            <span class="text-zinc-400 text-xs">수업 관리자 모드</span>
-                        </div>
-                        <h2 class="text-base md:text-xl font-extrabold mt-1 text-white">교사용 수업 관리 대시보드 & AI 피드백 관제</h2>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="generateAllAiFeedbacks()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
-                            <i class="fa-solid fa-sparkles text-amber-300"></i> 전체 AI 피드백 일괄 생성
-                        </button>
-                        <button onclick="downloadCSV()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 font-bold border border-zinc-700">
-                            <i class="fa-solid fa-file-csv text-sky-400"></i> 결과물 CSV 다운로드
-                        </button>
-                        <button onclick="promptChangePassword()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2.5 rounded-xl transition border border-zinc-700 font-semibold">
-                            <i class="fa-solid fa-key mr-1"></i> 암호 변경
-                        </button>
-                        <button onclick="lockTeacherDashboard()" class="bg-zinc-900 hover:bg-rose-950 text-rose-300 border border-zinc-800 hover:border-rose-800 text-xs px-3.5 py-2.5 rounded-xl transition font-semibold">
-                            <i class="fa-solid fa-lock mr-1"></i> 대시보드 잠그기
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Statistics Metrics Row -->
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-                    <div class="tesla-card p-4 border-l-2 border-l-tesla-red">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">총 탐구 주제</span>
-                        <span class="text-xl font-extrabold text-white mt-0.5 block">11개 모둠</span>
-                    </div>
-                    <div class="tesla-card p-4 border-l-2 border-l-sky-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">모둠 작성 상태</span>
-                        <span id="stat-completed-count" class="text-xl font-extrabold text-sky-400 mt-0.5 block">11개 관리</span>
-                    </div>
-                    <div class="tesla-card p-4 border-l-2 border-l-purple-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">모둠 AI 피드백</span>
-                        <span id="stat-ai-feedback-count" class="text-xl font-extrabold text-purple-400 mt-0.5 block">0개 완료</span>
-                    </div>
-                    <div class="tesla-card p-4 border-l-2 border-l-emerald-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">개별 제출 학생</span>
-                        <span id="stat-student-count" class="text-xl font-extrabold text-emerald-400 mt-0.5 block">0명 제출</span>
-                    </div>
-                    <div class="tesla-card p-4 border-l-2 border-l-amber-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">개별 AI 피드백</span>
-                        <span id="stat-student-ai-count" class="text-xl font-extrabold text-amber-400 mt-0.5 block">0건 완료</span>
-                    </div>
-                </div>
-
-                <!-- Individual Student Submissions & AI Feedback Table -->
-                <div class="tesla-card p-5 space-y-4 border-t-2 border-t-emerald-500">
-                    <div class="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-800 pb-3">
-                        <div>
-                            <span class="bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                                <i class="fa-solid fa-user-graduate mr-1"></i>학생 개별 성찰지 관제
-                            </span>
-                            <h3 class="text-sm font-bold text-white mt-1 flex items-center gap-2">
-                                개별 학생 활동 평가 & AI 맞춤형 세특/피드백 생성
-                            </h3>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="generateAllStudentAiFeedbacks()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg">
-                                <i class="fa-solid fa-sparkles text-amber-300"></i> 전체 학생 AI 피드백 일괄 생성
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto custom-scrollbar">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-zinc-900 text-zinc-300 border-b border-zinc-800">
-                                    <th class="p-3 font-bold uppercase tracking-wider">학생 정보 / 주제</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">개별 질문 답변 (Q1 / Q2)</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider">자가 평가</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">학생 맞춤형 AI 피드백</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider text-center">작동</th>
-                                </tr>
-                            </thead>
-                            <tbody id="student-table-body" class="divide-y divide-zinc-800/60">
-                                <tr>
-                                    <td colspan="5" class="p-4 text-center text-zinc-500 text-xs">
-                                        <i class="fa-solid fa-spinner fa-spin mr-1"></i> 학생 개별 활동지 데이터를 불러오는 중입니다...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Group Submissions & AI Feedback Master Table -->
-                <div class="tesla-card p-5 space-y-4">
-                    <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-table-list text-tesla-red"></i> 모둠별 합의안 및 AI 교사 피드백 관리
-                        </h3>
-                        <span class="text-xs text-zinc-400"><i class="fa-solid fa-circle-info mr-1"></i> [AI 피드백] 버튼 클릭 시 AI가 수록 내용을 검토합니다.</span>
-                    </div>
-
-                    <div class="overflow-x-auto custom-scrollbar">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-zinc-900 text-zinc-300 border-b border-zinc-800">
-                                    <th class="p-3 font-bold uppercase tracking-wider">주제 / 모둠</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider">모둠원 구성</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider">연구 방법</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">탐구 요약 & 사회적 영향</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">교사/AI 피드백</th>
-                                    <th class="p-3 font-bold uppercase tracking-wider text-center">작동</th>
-                                </tr>
-                            </thead>
-                            <tbody id="teacher-table-body" class="divide-y divide-zinc-800/60">
-                                <!-- Populated dynamically by JS -->
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </section>
@@ -647,23 +478,6 @@
     <div id="toast-message" class="fixed bottom-6 right-6 bg-zinc-900/95 text-white text-xs px-5 py-3.5 rounded-2xl shadow-2xl z-50 hidden transition-all duration-300 flex items-center gap-3 border border-zinc-700 backdrop-blur-md">
         <i id="toast-icon" class="fa-solid fa-circle-check text-tesla-red text-lg"></i>
         <span id="toast-text" class="font-medium">메시지가 등록되었습니다.</span>
-    </div>
-
-    <!-- Password Change Modal -->
-    <div id="password-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="tesla-card max-w-sm w-full p-6 space-y-4 shadow-2xl relative border border-zinc-800">
-            <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-key text-tesla-red"></i> 대시보드 암호 변경</h3>
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold text-zinc-300 block mb-1">새 비밀번호:</label>
-                    <input type="password" id="new-pw-input" class="w-full p-3 rounded-xl border border-zinc-800 font-mono tracking-widest">
-                </div>
-            </div>
-            <div class="flex justify-end gap-2 pt-2">
-                <button onclick="closePasswordModal()" class="px-4 py-2 text-xs text-zinc-400 font-medium hover:text-white">취소</button>
-                <button onclick="saveNewPassword()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-4 py-2 rounded-xl font-bold">저장하기</button>
-            </div>
-        </div>
     </div>
 
     <!-- Detail Modal for Timeline Discovery Item -->
@@ -680,10 +494,10 @@
 
     <!-- Footer -->
     <footer class="bg-zinc-950 text-zinc-500 text-xs py-6 text-center border-t border-zinc-900 mt-12">
-        <p class="tracking-wide">2026학년도 중등 과학과 AI·디지털 도구 활용 교수·학습 지원 플랫폼 | 고등학교 생명과학 I</p>
+        <p class="tracking-wide">2026학년도 중등 과학과 AI·디지털 도구 활용 교수·학습 지원 플랫폼 | 고등학교 생명과학 I (학생용)</p>
     </footer>
 
-    <!-- Firebase SDK Imports and Platform Core Logic -->
+    <!-- Firebase SDK Imports and Student Realtime Sync -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -705,15 +519,12 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // Global Application Identifier for Firebase
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'kyjt7373-2';
         let currentUser = null;
 
         // In-Memory Data Cache
         window.groupWorksheetsData = {};
         window.peerFeedbacksData = [];
-        window.individualAssessmentsData = [];
-        window.teacherPassword = "1234";
 
         // Authenticate Anonymously & Bind Firestore Realtime Listeners
         window.addEventListener('DOMContentLoaded', async () => {
@@ -738,9 +549,6 @@
                     if (document.getElementById('group-select') && typeof window.loadGroupData === 'function') {
                         window.loadGroupData();
                     }
-                    if (typeof window.renderTeacherTable === 'function') {
-                        window.renderTeacherTable();
-                    }
                 }, (err) => {
                     console.warn("Firestore group snapshot listener error:", err);
                 });
@@ -755,28 +563,8 @@
                     if (typeof window.renderPresentationCards === 'function') {
                         window.renderPresentationCards();
                     }
-                    if (typeof window.updateStatCounts === 'function') {
-                        window.updateStatCounts();
-                    }
                 }, (err) => {
                     console.warn("Firestore peer feedback listener error:", err);
-                });
-
-                // Firestore Listener 3: Individual Student Assessments
-                const indColRef = collection(db, 'artifacts', appId, 'public', 'data', 'individualAssessments');
-                onSnapshot(indColRef, (snapshot) => {
-                    window.individualAssessmentsData = [];
-                    snapshot.forEach((docSnap) => {
-                        window.individualAssessmentsData.push({ id: docSnap.id, ...docSnap.data() });
-                    });
-                    if (typeof window.renderStudentTeacherTable === 'function') {
-                        window.renderStudentTeacherTable();
-                    }
-                    if (typeof window.updateStatCounts === 'function') {
-                        window.updateStatCounts();
-                    }
-                }, (err) => {
-                    console.warn("Firestore individual assessment listener error:", err);
                 });
 
             } catch (err) {
@@ -789,7 +577,7 @@
             }
         });
 
-        // Global Firebase Save Helper Functions
+        // Global Firebase Save Helpers for Students
         window.saveGroupWorksheetToDb = async function(groupId, data) {
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'groupWorksheets', groupId);
@@ -797,7 +585,7 @@
                 if (typeof window.showToast === 'function') window.showToast("DB에 모둠 활동지가 저장되었습니다!");
             } catch(e) {
                 console.warn(e);
-                if (typeof window.showToast === 'function') window.showToast("로컬 메모리에 저장되었습니다 (DB 오프라인)");
+                if (typeof window.showToast === 'function') window.showToast("로컬 메모리에 저장되었습니다.");
             }
         };
 
@@ -805,7 +593,7 @@
             try {
                 const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'peerFeedbacks');
                 await addDoc(colRef, feedbackObj);
-                if (typeof window.showToast === 'function') window.showToast("동료 피드백이 실시간 DB에 공유되었습니다!");
+                if (typeof window.showToast === 'function') window.showToast("동료 피드백이 실시간 공유되었습니다!");
             } catch(e) {
                 console.warn(e);
                 if (typeof window.showToast === 'function') window.showToast("피드백 등록 완료 (로컬)");
@@ -816,68 +604,15 @@
             try {
                 const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'individualAssessments');
                 await addDoc(colRef, assessmentObj);
-                if (typeof window.showToast === 'function') window.showToast("개별 활동지가 정상 제출되었습니다!");
+                if (typeof window.showToast === 'function') window.showToast("개별 활동지가 제출되었습니다!");
             } catch(e) {
                 console.warn(e);
                 if (typeof window.showToast === 'function') window.showToast("개별 활동지 제출 완료 (로컬)");
             }
         };
-
-        window.saveStudentAiFeedbackToDb = async function(assessmentId, feedbackText) {
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'individualAssessments', assessmentId);
-                await setDoc(docRef, { teacherAiFeedback: feedbackText }, { merge: true });
-                if (typeof window.showToast === 'function') window.showToast("학생 AI 피드백이 저장되었습니다!");
-            } catch(e) {
-                console.warn("Save student AI feedback error:", e);
-            }
-        };
     </script>
 
     <script>
-        let isTeacherAuthenticated = false;
-
-        // Connected Gemini API Request Handler
-        async function callGeminiApi(promptText) {
-            const apiKey = "AQ.Ab8RN6KjcrSyV3ST5HoIvBLAQvoPnYvJAPXts4kGcxVKEw65dw";
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
-
-            const payload = {
-                contents: [
-                    {
-                        parts: [
-                            {
-                                text: promptText
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            try {
-                const res = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-goog-api-key': apiKey
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!res.ok) {
-                    const errObj = await res.json().catch(() => ({}));
-                    console.error("Gemini API Error Response:", errObj);
-                    throw new Error(`API 호출 실패 (상태 코드: ${res.status})`);
-                }
-
-                const data = await res.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "답변을 생성하지 못했습니다.";
-            } catch (err) {
-                console.error("callGeminiApi Exception:", err);
-                return `[AI 오류 발생] Gemini API 호출을 처리할 수 없습니다: ${err.message}`;
-            }
-        }
-
         // Timeline Dataset (11 Discoveries for 11 Groups)
         window.timelineData = [
             { id: "g1", year: "1543년", title: "근대 해부학의 정립과 파브리카 출판", scientist: "안드레아스 베살리우스", category: "medicine", methodType: "inductive", summary: "직접 인체 해부를 관찰하여 갈레노스의 오류를 수정하고 인체 구조를 체계적으로 기록함.", detail: "관찰 대상의 사체를 직접 해부하여 기구와 기관의 구조를 세밀히 관찰 및 서술한 귀납적 연구 방법.", impact: "전통 권위 의학에서 경험적·실험적 의학으로의 대전환을 유도함." },
@@ -893,9 +628,9 @@
             { id: "g11", year: "2003년", title: "인간 게놈 프로젝트 (HGP) 완료", scientist: "국제 컨소시엄 (빅 데이터)", category: "genetics", methodType: "inductive", summary: "인간 DNA 약 30억 개 염기서열 전체를 해독하여 유전체 지지도 작성.", detail: "자동화 서열분석기와 정보학 알고리즘으로 대량 유전 데이터 수집 및 분석.", impact: "정밀의학, 유전자 치료, 생명정보학 혁명 유발." }
         ];
 
-        // Core UI Navigation Function
+        // Tab Navigation
         window.switchTab = function(tabId) {
-            const tabs = ['timeline', 'group', 'presentation', 'assessment', 'ai-tutor', 'teacher'];
+            const tabs = ['timeline', 'group', 'presentation', 'assessment', 'ai-tutor'];
             tabs.forEach(t => {
                 const sec = document.getElementById(`sec-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
@@ -911,13 +646,9 @@
             if (tabId === 'presentation' && typeof renderPresentationCards === 'function') {
                 renderPresentationCards();
             }
-            if (tabId === 'teacher' && isTeacherAuthenticated) {
-                if (typeof renderTeacherTable === 'function') renderTeacherTable();
-                if (typeof renderStudentTeacherTable === 'function') renderStudentTeacherTable();
-            }
         };
 
-        // Custom Toast Renderer
+        // Custom Toast Notification Handler
         window.showToast = function(msg, isError = false) {
             const toast = document.getElementById('toast-message');
             const toastText = document.getElementById('toast-text');
@@ -937,7 +668,7 @@
             }, 3000);
         };
 
-        // Group Selector Init
+        // Group Select Box Population
         window.initGroupSelect = function() {
             const select = document.getElementById('group-select');
             if (!select) return;
@@ -951,7 +682,7 @@
             window.loadGroupData();
         };
 
-        // Group Data Form Loader (수정: 예시 데이터 자동 채우기 제거)
+        // Group Data Form Loader
         window.loadGroupData = function() {
             const groupId = document.getElementById('group-select')?.value || 'g1';
             const item = timelineData.find(x => x.id === groupId);
@@ -968,7 +699,6 @@
             document.getElementById('role-designer').value = data.roleDesigner || '';
             document.getElementById('role-presenter').value = data.rolePresenter || '';
 
-            // 기존 입력값이 있는 경우에만 표시하고, 없으면 빈 칸으로 초기화
             document.getElementById('ws-overview').value = data.overview || '';
             document.getElementById('ws-method-detail').value = data.methodDetail || '';
             document.getElementById('ws-impact').value = data.impact || '';
@@ -999,7 +729,7 @@
             }
         };
 
-        // Save Worksheet
+        // Save Group Worksheet
         window.saveWorksheet = function() {
             const groupId = document.getElementById('group-select')?.value;
             if (!groupId) return;
@@ -1125,9 +855,6 @@
                         <span class="font-bold text-sky-400 block"><i class="fa-solid fa-earth-americas mr-1"></i>사회적 & 학문적 영향</span>
                         <p class="text-zinc-300 leading-relaxed">${item.impact}</p>
                     </div>
-                    <button onclick="closeModal(); openAiPrompt('${item.scientist}의 ${item.title} 발견에 대해 생명과학사 관점에서 더 자세히 설명해줘')" class="w-full bg-tesla-red hover:bg-red-600 text-white font-bold text-xs py-2.5 rounded-xl transition shadow flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-robot"></i> AI 도우미에게 이 주제 상세 질의하기
-                    </button>
                 </div>
             `;
             modal.classList.remove('hidden');
@@ -1138,79 +865,7 @@
             if (modal) modal.classList.add('hidden');
         };
 
-        async function aiHelpResearch() {
-            const groupId = document.getElementById('group-select').value;
-            const item = timelineData.find(x => x.id === groupId);
-            if (!item) return;
-
-            showToast("AI가 탐구 자료를 조사하고 있습니다...");
-            const prompt = `${item.scientist}의 [${item.title}] 발견에 관한 탐구 보고서 입력을 보조해줘. 1) 주요 개요 2) 연역적/귀납적 연구 방법 분석 근거 3) 현대 사회적 영향을 요약해서 제시해줘.`;
-
-            try {
-                const answer = await callGeminiApi(prompt);
-                document.getElementById('ws-method-detail').value += `\n[AI 탐구 보조 참고]\n` + answer;
-                showToast("AI 결과가 탐구 상세란에 추가되었습니다!");
-            } catch(e) {
-                console.error(e);
-                showToast("AI 질문 응답 실패", true);
-            }
-        }
-
-        function openAiPrompt(promptText) {
-            switchTab('ai-tutor');
-            document.getElementById('ai-input').value = promptText;
-            sendAiQuery();
-        }
-
-        async function sendAiQuery() {
-            const inputEl = document.getElementById('ai-input');
-            const chatBox = document.getElementById('ai-chat-box');
-            const query = inputEl.value.trim();
-            if (!query) return;
-
-            // Render User Bubble
-            chatBox.innerHTML += `
-                <div class="flex justify-end">
-                    <div class="bg-tesla-red text-white p-3 rounded-xl max-w-lg text-xs font-medium">
-                        ${query}
-                    </div>
-                </div>
-            `;
-            inputEl.value = '';
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            // Render Loading AI Bubble
-            const loadingId = 'ai-loading-' + Date.now();
-            chatBox.innerHTML += `
-                <div id="${loadingId}" class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl text-xs text-zinc-400">
-                    <i class="fa-solid fa-spinner fa-spin mr-1.5 text-tesla-red"></i> Gemini AI 답변 생각 중...
-                </div>
-            `;
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            try {
-                const answer = await callGeminiApi(query);
-                const loadingEl = document.getElementById(loadingId);
-                if (loadingEl) {
-                    loadingEl.innerHTML = `
-                        <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
-                        <div class="text-zinc-200 leading-relaxed whitespace-pre-wrap">${answer}</div>
-                    `;
-                }
-            } catch(e) {
-                const loadingEl = document.getElementById(loadingId);
-                if (loadingEl) {
-                    loadingEl.innerHTML = `<span class="text-rose-400">Gemini AI 호출 중 오류가 발생했습니다. 다시 시도해주세요.</span>`;
-                }
-            }
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function askPresetAi(promptText) {
-            document.getElementById('ai-input').value = promptText;
-            sendAiQuery();
-        }
-
+        // Presentation Peer Feedbacks
         function renderPresentationCards() {
             const container = document.getElementById('presentation-cards-container');
             if (!container) return;
@@ -1300,7 +955,7 @@
 
         function exportAssessmentReport() {
             const text = `
-[생명과학사 개별 활동 평가 보고서]
+[생명과학사 개별 활동 평가 제출 내역]
 학생 정보: ${document.getElementById('ind-student-info')?.value || '미입력'}
 탐구 주제: ${document.getElementById('ind-student-topic')?.value || '미입력'}
 Q1 답변: ${document.getElementById('ind-q1')?.value || ''}
@@ -1310,291 +965,39 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
             `.trim();
 
             navigator.clipboard.writeText(text).then(() => {
-                showToast("평가 보고서가 클립보드에 복사되었습니다!");
+                showToast("평가 내용이 클립보드에 복사되었습니다!");
             }).catch(() => {
                 showToast("클립보드 복사 실패", true);
             });
         }
 
-        function verifyTeacherPassword() {
-            const pw = document.getElementById('teacher-pw-input').value;
-            if (pw === window.teacherPassword) {
-                isTeacherAuthenticated = true;
-                document.getElementById('teacher-auth-card').classList.add('hidden');
-                document.getElementById('teacher-dashboard-content').classList.remove('hidden');
-                renderTeacherTable();
-                renderStudentTeacherTable();
-                updateStatCounts();
-                showToast("교사 전용 대시보드가 인증되었습니다.");
-            } else {
-                document.getElementById('pw-error-msg').classList.remove('hidden');
-            }
-        }
+        function sendAiQuery() {
+            const inputEl = document.getElementById('ai-input');
+            const chatBox = document.getElementById('ai-chat-box');
+            const query = inputEl.value.trim();
+            if (!query) return;
 
-        function lockTeacherDashboard() {
-            isTeacherAuthenticated = false;
-            document.getElementById('teacher-auth-card').classList.remove('hidden');
-            document.getElementById('teacher-dashboard-content').classList.add('hidden');
-            document.getElementById('teacher-pw-input').value = '';
-            showToast("대시보드가 잠겼습니다.");
-        }
-
-        function promptChangePassword() {
-            document.getElementById('password-modal').classList.remove('hidden');
-        }
-
-        function closePasswordModal() {
-            document.getElementById('password-modal').classList.add('hidden');
-        }
-
-        function saveNewPassword() {
-            const newPw = document.getElementById('new-pw-input').value.trim();
-            if (newPw) {
-                window.teacherPassword = newPw;
-                showToast("비밀번호가 성공적으로 변경되었습니다.");
-                closePasswordModal();
-            }
-        }
-
-        function renderTeacherTable() {
-            const tbody = document.getElementById('teacher-table-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-
-            timelineData.forEach((item, index) => {
-                const data = window.groupWorksheetsData[item.id] || {};
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-zinc-900/50 transition';
-
-                tr.innerHTML = `
-                    <td class="p-3 font-bold text-white">
-                        <span class="text-tesla-red text-[10px] block">${index + 1}모둠</span>
-                        ${item.title}
-                    </td>
-                    <td class="p-3 text-zinc-400">
-                        <span class="block">조장: ${data.roleLeader || '-'}</span>
-                        <span class="block text-[11px]">조사: ${data.roleResearcher || '-'}</span>
-                    </td>
-                    <td class="p-3">
-                        <span class="bg-zinc-800 text-zinc-200 px-2 py-0.5 rounded text-[11px] font-semibold">${data.methodType || item.methodType}</span>
-                    </td>
-                    <td class="p-3 text-zinc-300">
-                        <p class="line-clamp-2">${data.overview || '미작성'}</p>
-                    </td>
-                    <td class="p-3 text-zinc-300">
-                        <div id="teacher-feedback-box-${item.id}" class="bg-zinc-950 p-2 rounded border border-zinc-800 text-[11px] ${data.teacherAiFeedback ? 'text-amber-300' : 'text-zinc-500'}">
-                            ${data.teacherAiFeedback || '아직 피드백이 생성되지 않았습니다.'}
-                        </div>
-                    </td>
-                    <td class="p-3 text-center">
-                        <button onclick="generateSingleAiFeedback('${item.id}')" class="bg-tesla-red hover:bg-red-600 text-white font-bold px-2.5 py-1.5 rounded-lg text-[11px] transition">
-                            AI 피드백
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        async function generateSingleAiFeedback(groupId) {
-            const item = timelineData.find(x => x.id === groupId);
-            const data = window.groupWorksheetsData[groupId] || {};
-
-            showToast("AI가 모둠 작성 내용을 평가 중입니다...");
-            const prompt = `생명과학 교사로서 ${item.title} 주제에 대해 탐구한 학생들의 작성 내용(연구방법: ${data.methodDetail || '미작성'}, 사회적 영향: ${data.impact || '미작성'})을 바탕으로 칭찬과 구체적 보완 지도가 담긴 2줄 이내의 총평을 작성해줘.`;
-
-            try {
-                const feedback = await callGeminiApi(prompt);
-                if (!window.groupWorksheetsData[groupId]) window.groupWorksheetsData[groupId] = {};
-                window.groupWorksheetsData[groupId].teacherAiFeedback = feedback;
-                
-                window.saveGroupWorksheetToDb(groupId, { teacherAiFeedback: feedback });
-                renderTeacherTable();
-                updateStatCounts();
-                showToast("AI 피드백이 생성되었습니다!");
-            } catch(e) {
-                console.error(e);
-                showToast("AI 피드백 생성 실패", true);
-            }
-        }
-
-        async function generateAllAiFeedbacks() {
-            showToast("전체 모둠 AI 피드백 생성을 시작합니다...");
-            for (let item of timelineData) {
-                await generateSingleAiFeedback(item.id);
-            }
-            showToast("전체 AI 피드백 완결!");
-        }
-
-        function renderStudentTeacherTable() {
-            const tbody = document.getElementById('student-table-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-
-            const students = window.individualAssessmentsData || [];
-
-            if (students.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="p-6 text-center text-zinc-500 text-xs">
-                            <i class="fa-solid fa-clipboard-question text-lg mb-2 block"></i>
-                            아직 제출된 개별 학생 활동지가 없습니다. [4. 개별 활동지 & 루브릭] 탭에서 학생 제출을 진행해보세요.
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            students.forEach((std, index) => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-zinc-900/50 transition';
-
-                const timeStr = std.submittedAt ? new Date(std.submittedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '-';
-
-                tr.innerHTML = `
-                    <td class="p-3 font-bold text-white">
-                        <span class="text-emerald-400 text-[10px] block font-mono">${timeStr} 제출</span>
-                        ${std.studentInfo || '무명 학생'}
-                        <span class="block text-[11px] text-zinc-400 font-normal mt-0.5"><i class="fa-solid fa-book-bookmark mr-1 text-zinc-500"></i>${std.topic || '주제 미입력'}</span>
-                    </td>
-                    <td class="p-3 text-zinc-300">
-                        <p class="line-clamp-2 text-[11px]"><strong class="text-amber-300">Q1:</strong> ${std.q1 || '-'}</p>
-                        <p class="line-clamp-2 text-[11px] mt-1"><strong class="text-sky-300">Q2:</strong> ${std.q2 || '-'}</p>
-                    </td>
-                    <td class="p-3">
-                        <div class="space-y-1">
-                            <span class="bg-zinc-800 text-amber-300 border border-zinc-700 px-2 py-0.5 rounded text-[10px] font-semibold block w-fit">발견분석: ${std.eval1 || '기본'}</span>
-                            <span class="bg-zinc-800 text-sky-300 border border-zinc-700 px-2 py-0.5 rounded text-[10px] font-semibold block w-fit">영향분석: ${std.eval2 || '기본'}</span>
-                        </div>
-                    </td>
-                    <td class="p-3 text-zinc-300">
-                        <div id="student-feedback-box-${std.id || index}" class="bg-zinc-950 p-2.5 rounded-xl border border-zinc-800 text-[11px] leading-relaxed ${std.teacherAiFeedback ? 'text-emerald-300 border-emerald-900/50' : 'text-zinc-500'}">
-                            ${std.teacherAiFeedback || '아직 개별 AI 피드백이 생성되지 않았습니다.'}
-                        </div>
-                    </td>
-                    <td class="p-3 text-center">
-                        <button onclick="generateSingleStudentAiFeedback('${std.id}', ${index})" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg text-[11px] transition shadow flex items-center gap-1 mx-auto shrink-0">
-                            <i class="fa-solid fa-robot"></i> AI 피드백
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        async function generateSingleStudentAiFeedback(studentId, index) {
-            const student = window.individualAssessmentsData.find(s => s.id === studentId) || window.individualAssessmentsData[index];
-            if (!student) return;
-
-            showToast(`${student.studentInfo || '학생'}의 개별 AI 피드백을 생성 중입니다...`);
-
-            const prompt = `고등학교 생명과학 교사로서 학생 '${student.studentInfo}'(탐구주제: ${student.topic})의 개별 성찰 활동지를 평가해줘.
-1. 질문 답변:
-- 새롭게 알게 된 주요 발견/연구방법(Q1): ${student.q1 || '상세 미입력'}
-- 학문/사회에 미친 영향 분석(Q2): ${student.q2 || '상세 미입력'}
-2. 자가 평가 결과:
-- 연구방법 자가평가: ${student.eval1 || '기본'}
-- 사회적 영향 자가평가: ${student.eval2 || '기본'}
-
-학생의 칭찬점, 과학적 탐구 태도, 그리고 발전 방향이 포함된 친절하고 정교한 2~3줄의 맞춤형 교사 피드백(생활기록부 세부능력 및 특기사항 참고용)을 한국어로 작성해줘.`;
-
-            try {
-                const feedback = await callGeminiApi(prompt);
-                student.teacherAiFeedback = feedback;
-
-                if (student.id && typeof window.saveStudentAiFeedbackToDb === 'function') {
-                    window.saveStudentAiFeedbackToDb(student.id, feedback);
-                }
-
-                renderStudentTeacherTable();
-                updateStatCounts();
-                showToast("학생 AI 개별 피드백 생성이 완료되었습니다!");
-            } catch(e) {
-                console.error(e);
-                showToast("AI 피드백 생성 중 오류가 발생했습니다.", true);
-            }
-        }
-
-        async function generateAllStudentAiFeedbacks() {
-            const students = window.individualAssessmentsData || [];
-            if (students.length === 0) {
-                showToast("피드백을 생성할 개별 제출 건이 없습니다.", true);
-                return;
-            }
-
-            showToast(`총 ${students.length}명의 학생 AI 피드백 일괄 생성을 시작합니다...`);
-            for (let i = 0; i < students.length; i++) {
-                await generateSingleStudentAiFeedback(students[i].id, i);
-            }
-            showToast("전체 학생 AI 개별 피드백 완료!");
-        }
-
-        function updateStatCounts() {
-            let aiCount = 0;
-            Object.values(window.groupWorksheetsData).forEach(v => {
-                if (v.teacherAiFeedback) aiCount++;
-            });
-            const statAi = document.getElementById('stat-ai-feedback-count');
-            if (statAi) statAi.textContent = `${aiCount}개 완료`;
-
-            const statPeer = document.getElementById('stat-peer-count');
-            if (statPeer) statPeer.textContent = `${window.peerFeedbacksData.length}건`;
-
-            const students = window.individualAssessmentsData || [];
-            const statStudent = document.getElementById('stat-student-count');
-            if (statStudent) statStudent.textContent = `${students.length}명 제출`;
-
-            let stdAiCount = 0;
-            students.forEach(s => {
-                if (s.teacherAiFeedback) stdAiCount++;
-            });
-            const statStudentAi = document.getElementById('stat-student-ai-count');
-            if (statStudentAi) statStudentAi.textContent = `${stdAiCount}건 완료`;
-        }
-
-        function downloadCSV() {
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+            chatBox.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-tesla-red text-white p-3 rounded-xl max-w-lg text-xs font-medium">
+                        ${query}
+                    </div>
+                </div>
+            `;
             
-            csvContent += "--- 모둠별 탐구 활동 결과 ---\n";
-            csvContent += "모둠번호,탐구주제,과학자,연구방법구분,연구방법상세,사회적영향,교사AI피드백\n";
+            chatBox.innerHTML += `
+                <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl text-xs text-zinc-300">
+                    <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
+                    해당 탐구 질문이 등록되었습니다. 교사 지도 하에 연대표 탐색 탭의 상세 자료와 함께 분석해 보세요!
+                </div>
+            `;
+            inputEl.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
 
-            timelineData.forEach((item, index) => {
-                const data = window.groupWorksheetsData[item.id] || {};
-                const row = [
-                    `${index + 1}모둠`,
-                    `"${item.title.replace(/"/g, '""')}"`,
-                    `"${item.scientist.replace(/"/g, '""')}"`,
-                    `"${data.methodType || item.methodType}"`,
-                    `"${(data.methodDetail || '').replace(/"/g, '""')}"`,
-                    `"${(data.impact || '').replace(/"/g, '""')}"`,
-                    `"${(data.teacherAiFeedback || '').replace(/"/g, '""')}"`
-                ].join(",");
-                csvContent += row + "\n";
-            });
-
-            csvContent += "\n--- 개별 학생 활동지 제출 및 AI 피드백 ---\n";
-            csvContent += "학생정보,선택주제,Q1_알게된발견,Q2_사회적영향,자가평가1,자가평가2,학생AI피드백\n";
-
-            (window.individualAssessmentsData || []).forEach((std) => {
-                const row = [
-                    `"${(std.studentInfo || '').replace(/"/g, '""')}"`,
-                    `"${(std.topic || '').replace(/"/g, '""')}"`,
-                    `"${(std.q1 || '').replace(/"/g, '""')}"`,
-                    `"${(std.q2 || '').replace(/"/g, '""')}"`,
-                    `"${(std.eval1 || '').replace(/"/g, '""')}"`,
-                    `"${(std.eval2 || '').replace(/"/g, '""')}"`,
-                    `"${(std.teacherAiFeedback || '').replace(/"/g, '""')}"`
-                ].join(",");
-                csvContent += row + "\n";
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `생명과학사_통합_평가_결과_${new Date().toISOString().slice(0,10)}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        function askPresetAi(promptText) {
+            document.getElementById('ai-input').value = promptText;
+            sendAiQuery();
         }
     </script>
 </body>
