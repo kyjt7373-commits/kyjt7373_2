@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생명과학의 역사 및 연구 방법 탐구 플랫폼 | TESLA DESIGN EDITION</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        tesla: {
+                            red: '#e82127',
+                            dark: '#0a0b0e',
+                            card: '#12141c',
+                            cardHover: '#181b26',
+                            border: '#222634',
+                            lightBorder: '#2f3548',
+                            accent: '#ff2a2f',
+                            silver: '#a1a8bd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #07080b; 
+            color: #f1f5f9;
+        }
+        
+        .tesla-card {
+            background: rgba(18, 20, 28, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tesla-card:hover {
+            border-color: rgba(232, 33, 39, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(232, 33, 39, 0.15);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(232,33,39,0.8) 0%, rgba(34,38,52,0.8) 50%, rgba(232,33,39,0.8) 100%);
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 20px;
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0b0e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a2e3f;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #e82127;
+        }
+
+        .tab-btn {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .tab-btn.active {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e82127;
+            box-shadow: 0 0 12px #e82127;
+            border-radius: 2px;
+        }
+
+        input, textarea, select {
+            background-color: #0b0c12 !important;
+            border-color: #222634 !important;
+            color: #f1f5f9 !important;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #e82127 !important;
+            box-shadow: 0 0 0 2px rgba(232, 33, 39, 0.25) !important;
+            outline: none !important;
+        }
+
+        .glow-red {
+            box-shadow: 0 0 20px rgba(232, 33, 39, 0.35);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-tesla-red selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-tesla-dark/95 border-b border-zinc-800/80 sticky top-0 z-50 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3.5">
+                <div class="bg-tesla-red text-white p-2.5 rounded-xl shadow-lg glow-red flex items-center justify-center w-10 h-10 shrink-0 font-extrabold tracking-tighter">
+                    <i class="fa-solid fa-dna text-lg"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-tesla-red/15 text-tesla-red text-[11px] px-2.5 py-0.5 rounded-full font-bold border border-tesla-red/30 uppercase tracking-wider">고3-1학기</span>
+                        <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">I. 생명과학의 역사</span>
+                        <span class="bg-zinc-800 text-zinc-300 text-[11px] px-2.5 py-0.5 rounded-full font-medium border border-zinc-700">3차시</span>
+                    </div>
+                    <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white mt-1 flex items-center gap-2">
+                        생명과학사 흐름 및 주요 발견의 연구 방법 분석
+                    </h1>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-4 text-xs bg-zinc-900/90 px-4 py-2 rounded-xl border border-zinc-800">
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">대상:</span> <span class="font-bold text-white ml-1">3학년 (20명)</span></div>
+                <div class="h-3 w-px bg-zinc-800"></div>
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">지도교사:</span> <span class="font-bold text-white ml-1">김영주 선생님</span></div>
+                <div class="h-3 w-px bg-zinc-800"></div>
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">DB 연동:</span> <span class="font-bold text-emerald-400 ml-1">Google Sheets API</span></div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs (학생 전용) -->
+        <nav class="bg-zinc-950/60 border-t border-zinc-900/80 px-4 text-xs font-semibold text-zinc-400 overflow-x-auto custom-scrollbar">
+            <div class="max-w-7xl mx-auto flex space-x-2 md:space-x-8 whitespace-nowrap">
+                <button onclick="switchTab('timeline')" id="tab-timeline" class="tab-btn py-3.5 px-1 flex items-center gap-2 active transition hover:text-white">
+                    <i class="fa-solid fa-timeline text-tesla-red"></i>
+                    <span>1. 연대표 탐색 (도입)</span>
+                </button>
+                <button onclick="switchTab('group')" id="tab-group" class="tab-btn py-3.5 px-1 flex items-center gap-2 transition hover:text-white">
+                    <i class="fa-solid fa-users text-sky-400"></i>
+                    <span>2. 모둠 탐색 활동 (탐색)</span>
+                </button>
+                <button onclick="switchTab('presentation')" id="tab-presentation" class="tab-btn py-3.5 px-1 flex items-center gap-2 transition hover:text-white">
+                    <i class="fa-solid fa-display text-purple-400"></i>
+                    <span>3. 발표 & 동료피드백</span>
+                </button>
+                <button onclick="switchTab('assessment')" id="tab-assessment" class="tab-btn py-3.5 px-1 flex items-center gap-2 transition hover:text-white">
+                    <i class="fa-solid fa-clipboard-check text-amber-400"></i>
+                    <span>4. 개별 활동지 & 루브릭</span>
+                </button>
+                <button onclick="switchTab('ai-tutor')" id="tab-ai-tutor" class="tab-btn py-3.5 px-1 flex items-center gap-2 transition text-zinc-300 font-semibold my-1 rounded-lg px-3 hover:bg-zinc-800">
+                    <i class="fa-solid fa-robot text-tesla-red"></i>
+                    <span>AI 탐구 도우미</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+        <!-- TAB 1: 연대표 탐색 -->
+        <section id="sec-timeline" class="space-y-6">
+            <div class="tesla-card p-6 border-l-4 border-l-tesla-red flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
+                <div class="relative z-10 space-y-1">
+                    <div class="flex items-center gap-2 text-tesla-red text-xs font-extrabold uppercase tracking-widest">
+                        <i class="fa-solid fa-circle-question"></i> 핵심 탐구 질문
+                    </div>
+                    <p class="text-base md:text-xl font-extrabold text-white">
+                        "생명과학사에서 주요한 과학적 발견은 무엇이고, 해당 발견에 사용된 연구 방법은 무엇인가?"
+                    </p>
+                    <p class="text-xs text-zinc-400 flex items-center gap-1.5 pt-1">
+                        <i class="fa-solid fa-bullseye text-tesla-red"></i> 성취기준: 주요 발견의 시기별 나열 및 연구 방법(귀납적/연역적 탐구 등) 조사 분석
+                    </p>
+                </div>
+            </div>
+
+            <!-- Filter & Search Controls -->
+            <div class="tesla-card p-4 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="font-bold text-zinc-400 mr-1 uppercase tracking-widest text-[11px]"><i class="fa-solid fa-sliders text-tesla-red mr-1.5"></i>필터:</span>
+                    <button onclick="filterTimeline('all')" class="filter-btn active bg-tesla-red text-white px-3 py-1.5 rounded-xl font-bold transition shadow-md">전체 보기</button>
+                    <button onclick="filterTimeline('cell')" class="filter-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 rounded-xl font-medium transition border border-zinc-700">세포학/미생물</button>
+                    <button onclick="filterTimeline('genetics')" class="filter-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 rounded-xl font-medium transition border border-zinc-700">유전학/진화/분자생물학</button>
+                    <button onclick="filterTimeline('medicine')" class="filter-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 rounded-xl font-medium transition border border-zinc-700">의학/생리학/백신</button>
+                </div>
+                <div class="relative w-full sm:w-72">
+                    <input type="text" id="timeline-search" oninput="searchTimeline()" placeholder="학자명, 발견 키워드 검색..." class="w-full text-xs pl-9 pr-3 py-2.5 rounded-xl border border-zinc-800 focus:outline-none text-white placeholder-zinc-500">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-zinc-500 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Timeline Display -->
+            <div class="relative timeline-line py-4 my-6" id="timeline-container"></div>
+        </section>
+
+        <!-- TAB 2: 모둠 탐색 활동 -->
+        <section id="sec-group" class="space-y-6 hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Group Setup Panel -->
+                <div class="tesla-card p-5 space-y-4 lg:col-span-1 border-t-2 border-t-sky-500">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-sm font-extrabold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-users-gear text-sky-400"></i> 모둠 구성 및 주제 관리
+                        </h2>
+                        <span class="text-[11px] bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded-full font-bold">11개 탐구 주제</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-zinc-300 uppercase block">작성할 모둠/탐구 주제 선택:</label>
+                        <select id="group-select" onchange="loadGroupDataFromLocal()" class="w-full text-xs p-3 rounded-xl font-semibold border border-zinc-700 bg-zinc-900 text-white">
+                        </select>
+                    </div>
+
+                    <div class="bg-zinc-900/90 p-3.5 rounded-xl border border-zinc-800 space-y-2.5">
+                        <span class="text-xs font-bold text-zinc-300 block uppercase"><i class="fa-solid fa-user-tag text-sky-400 mr-1.5"></i>모둠원 역할 분담</span>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <input type="text" id="role-leader" placeholder="조장 (진행/통합)" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-researcher" placeholder="조사원 (자료탐색)" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-designer" placeholder="정리원 (Canva/자료)" class="p-2 rounded-lg border text-xs">
+                            <input type="text" id="role-presenter" placeholder="발표자 (발표준비)" class="p-2 rounded-lg border text-xs">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group Research Worksheet -->
+                <div class="tesla-card p-6 space-y-5 lg:col-span-2 border-t-2 border-t-tesla-red">
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-800 pb-4">
+                        <div>
+                            <span id="current-group-badge" class="text-[11px] bg-tesla-red/20 text-tesla-red border border-tesla-red/30 px-2.5 py-0.5 rounded-full font-extrabold uppercase">1모둠 활동지</span>
+                            <h2 id="current-group-title" class="text-base md:text-lg font-bold text-white mt-1">주제명</h2>
+                        </div>
+                        <button onclick="saveWorksheetToDb()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg glow-red">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> 구글 시트 DB에 저장
+                        </button>
+                    </div>
+
+                    <div class="space-y-4 text-xs">
+                        <div>
+                            <label class="font-bold text-zinc-300 block mb-1">1. 탐구 대상 주요 과학적 발견 및 시대적 배경</label>
+                            <textarea id="ws-overview" rows="2" class="w-full p-3 rounded-xl border border-zinc-800 text-xs" placeholder="탐구 내용 개요를 입력하세요..."></textarea>
+                        </div>
+
+                        <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
+                            <label class="font-bold text-tesla-red block flex items-center gap-1.5">
+                                <i class="fa-solid fa-flask-vial"></i> 2. 연구 방법 분석 (연역적 vs 귀납적 탐구 구분 및 근거)
+                            </label>
+                            <div class="flex flex-wrap gap-4 my-2 text-zinc-300 font-medium">
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                                    <input type="radio" name="ws-method-type" value="inductive" class="accent-tesla-red" checked> 귀납적 탐구
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                                    <input type="radio" name="ws-method-type" value="deductive" class="accent-tesla-red"> 연역적 탐구
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer hover:text-white">
+                                    <input type="radio" name="ws-method-type" value="mixed" class="accent-tesla-red"> 병행/복합 모델
+                                </label>
+                            </div>
+                            <textarea id="ws-method-detail" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체적인 연구 방법 근거를 입력하세요."></textarea>
+                        </div>
+
+                        <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2.5">
+                            <label class="font-bold text-sky-400 block flex items-center gap-1.5">
+                                <i class="fa-solid fa-globe"></i> 3. 다른 학문 및 사회에 미친 영향 분석
+                            </label>
+                            <textarea id="ws-impact" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="사회적/학문적 영향을 기술하세요."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="font-bold text-zinc-300 block mb-1">
+                                <i class="fa-solid fa-link text-zinc-500 mr-1"></i> 4. 발표 자료 링크 (Canva, 슬라이드 등)
+                            </label>
+                            <input type="text" id="ws-link" placeholder="https://canva.com/... 공유 링크 URL" class="w-full p-3 rounded-xl border border-zinc-800">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 3: 발표 및 동료 피드백 -->
+        <section id="sec-presentation" class="space-y-6 hidden">
+            <div class="tesla-card p-6 border-l-4 border-l-purple-500 flex justify-between items-center">
+                <div>
+                    <h2 class="text-base md:text-lg font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-display text-purple-400"></i> 모둠별 발표 및 실시간 피드백</h2>
+                    <p class="text-xs text-zinc-400 mt-1">각 모둠의 발표를 듣고 실시간 동료 피드백을 등록하세요.</p>
+                </div>
+                <button onclick="renderPresentationCards()" class="bg-zinc-800 hover:bg-zinc-700 text-white text-xs px-3.5 py-2 rounded-xl transition border border-zinc-700 font-bold">
+                    <i class="fa-solid fa-rotate-right text-purple-400"></i> 새로고침
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="presentation-cards-container"></div>
+        </section>
+
+        <!-- TAB 4: 개별 활동지 & 과정 중심 평가 -->
+        <section id="sec-assessment" class="space-y-6 hidden">
+            <div class="tesla-card p-6 space-y-5 border-t-2 border-t-amber-500">
+                <div class="border-b border-zinc-800 pb-4">
+                    <span class="bg-amber-950/80 text-amber-300 border border-amber-700/60 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">과정 중심 평가</span>
+                    <h2 class="text-base font-bold text-white mt-1">생명과학사 탐구 과정 개별 성찰 및 제출</h2>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                    <div>
+                        <label class="font-bold text-zinc-300 block mb-1">학생 이름 및 학번:</label>
+                        <input type="text" id="ind-student-name" placeholder="예: 30101 홍길동" class="w-full p-3 rounded-xl border border-zinc-800">
+                    </div>
+                    <div>
+                        <label class="font-bold text-zinc-300 block mb-1">Q1. 이번 수업에서 새롭게 알게 된 주요 생명과학사 발견과 그 연구 방법은 무엇인가요?</label>
+                        <textarea id="ind-q1" rows="2" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="내용을 작성하세요..."></textarea>
+                    </div>
+                    <div>
+                        <label class="font-bold text-zinc-300 block mb-1">Q2. 본인이 선택한 과학적 발견이 현대 사회나 다른 학문 및 인류 삶에 미친 영향은 무엇인가요?</label>
+                        <textarea id="ind-q2" rows="3" class="w-full p-3 rounded-xl border border-zinc-800" placeholder="구체 사례를 기술하세요..."></textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-2">
+                    <button onclick="submitIndividualWorksheet()" class="bg-tesla-red hover:bg-red-600 text-white text-xs px-6 py-3 rounded-xl font-bold shadow-lg glow-red transition">
+                        <i class="fa-solid fa-paper-plane mr-1.5"></i> 개별 평가 최종 제출하기
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: AI 탐구 도우미 -->
+        <section id="sec-ai-tutor" class="space-y-6 hidden">
+            <div class="tesla-card p-6 space-y-4 border-t-2 border-t-tesla-red">
+                <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
+                    <div class="bg-tesla-red/20 text-tesla-red p-3 rounded-xl border border-tesla-red/30">
+                        <i class="fa-solid fa-robot text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-extrabold text-white">생명과학사 AI 탐구 도우미</h2>
+                        <p class="text-xs text-zinc-400 mt-0.5">역사적 발견 과정과 연역/귀납 연구 방법에 대해 질문하세요.</p>
+                    </div>
+                </div>
+
+                <div id="ai-chat-box" class="bg-zinc-950 p-4 rounded-xl h-80 overflow-y-auto space-y-3 text-xs custom-scrollbar border border-zinc-800/80">
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl">
+                        <span class="font-bold text-tesla-red block mb-1 flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> AI 도우미</span>
+                        안녕하세요! 생명과학사 수업 탐구 도우미입니다. 역사 속 연구 방법에 대해 질문해주세요!
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <input type="text" id="ai-input" onkeydown="if(event.key==='Enter') sendAiQuery()" placeholder="질문을 입력하세요..." class="flex-1 text-xs p-3 rounded-xl border border-zinc-800 focus:outline-none">
+                    <button onclick="sendAiQuery()" class="bg-tesla-red hover:bg-red-600 text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-1.5 shrink-0 shadow-lg glow-red">
+                        <i class="fa-solid fa-paper-plane"></i> 전 송
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast-message" class="fixed bottom-6 right-6 bg-zinc-900/95 text-white text-xs px-5 py-3.5 rounded-2xl shadow-2xl z-50 hidden transition-all duration-300 flex items-center gap-3 border border-zinc-700 backdrop-blur-md">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-tesla-red text-lg"></i>
+        <span id="toast-text" class="font-medium">메시지가 등록되었습니다.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 text-zinc-500 text-xs py-6 text-center border-t border-zinc-900 mt-12">
+        <p class="tracking-wide">2026학년도 중등 과학과 AI·디지털 도구 활용 교수·학습 지원 플랫폼 | 고등학교 생명과학 I</p>
+    </footer>
+
+    <script>
+        function showToast(text, isError = false) {
+            const toast = document.getElementById('toast-message');
+            const toastText = document.getElementById('toast-text');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastText.textContent = text;
+            toastIcon.className = isError ? 'fa-solid fa-circle-exclamation text-rose-500 text-lg' : 'fa-solid fa-circle-check text-tesla-red text-lg';
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 3500);
+        }
+
+        const timelineData = [
+            { id: 'vesalius', year: '1543', title: '근대 해부학의 창시 (인체 해부)', scientist: '안드레아스 베살리우스', category: 'medicine', methodType: 'inductive', summary: '인체 직접 해부를 통해 인체 구조에 관한 정밀한 해부학 서적 출판.' },
+            { id: 'harvey', year: '1628', title: '혈액 순환 원리 발견', scientist: '윌리엄 하비', category: 'medicine', methodType: 'deductive', summary: '심장이 펌프 작용을 하여 혈액이 순환한다는 가설 수립 및 결찰 실험 검증.' },
+            { id: 'hooke', year: '1665', title: '현미경을 통한 세포(Cell) 발견', scientist: '로버트 훅', category: 'cell', methodType: 'inductive', summary: '광학 현미경으로 코르크 조직 관찰 후 세포(Cell)라 명명.' },
+            { id: 'jenner', year: '1796', title: '우두 종두법 발명 (최초 백신)', scientist: '에드워드 제너', category: 'medicine', methodType: 'deductive', summary: '우두 접종 실험으로 천연두 면역 형성 원리 확인.' },
+            { id: 'darwin', year: '1859', title: '종의 기원 및 자연선택설', scientist: '찰스 다윈', category: 'genetics', methodType: 'inductive', summary: '세계 탐사 및 생물 관찰 기록 종합 후 자연선택 진화론 제시.' },
+            { id: 'pasteur', year: '1861', title: '자연발생설 부정 (백조목 실험)', scientist: '루이 파스퇴르', category: 'cell', methodType: 'deductive', summary: 'S자형 백조목 플라스크 실험을 통한 미생물 발생 원인 연역적 증명.' },
+            { id: 'mendel', year: '1865', title: '멘델의 유전 법칙 발표', scientist: '그레고어 멘델', category: 'genetics', methodType: 'deductive', summary: '완두 교배 실험과 통계적 가설 검증으로 유전 법칙 정립.' },
+            { id: 'fleming', year: '1928', title: '페니실린(항생제) 발견', scientist: '알렉산더 플레밍', category: 'medicine', methodType: 'inductive', summary: '푸른곰팡이 주변의 세균 증식 억제 현상을 우연히 발견.' },
+            { id: 'watson', year: '1953', title: 'DNA 이중나선 구조 규명', scientist: '왓슨 & 크릭', category: 'genetics', methodType: 'deductive', summary: 'X선 회절 데이터 및 입체 모형 구축을 통한 구조 제시.' },
+            { id: 'hgp', year: '2003', title: '사람 유전체 해독 완료 (HGP)', scientist: '국제 컨소시엄', category: 'genetics', methodType: 'mixed', summary: '인간 30억 개 염기서열 자동 해독 및 지도화.' },
+            { id: 'crispr', year: '2012', title: 'CRISPR-Cas9 유전자 가위', scientist: '샤르팡티에 & 다우드나', category: 'genetics', methodType: 'deductive', summary: '세균 면역 기전을 응용한 유전자 정밀 편집 기술 개발.' }
+        ];
+
+        let groupData = {};
+
+        function initGroupData() {
+            timelineData.forEach((item, index) => {
+                const groupNum = index + 1;
+                groupData[groupNum] = {
+                    groupNum: groupNum,
+                    topicTitle: `${item.title} (${item.scientist})`,
+                    roles: { leader: '', researcher: '', designer: '', presenter: '' },
+                    overview: item.summary,
+                    methodType: item.methodType,
+                    methodDetail: '',
+                    impact: '',
+                    link: ''
+                };
+            });
+        }
+
+        function switchTab(tabId) {
+            ['timeline', 'group', 'presentation', 'assessment', 'ai-tutor'].forEach(t => {
+                document.getElementById(`tab-${t}`)?.classList.remove('active');
+                document.getElementById(`sec-${t}`)?.classList.add('hidden');
+            });
+            document.getElementById(`tab-${tabId}`)?.classList.add('active');
+            document.getElementById(`sec-${tabId}`)?.classList.remove('hidden');
+
+            if (tabId === 'presentation') renderPresentationCards();
+        }
+
+        function renderTimeline(dataToRender = timelineData) {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+            dataToRender.forEach((item, idx) => {
+                const isEven = idx % 2 === 0;
+                container.innerHTML += `
+                    <div class="mb-8 flex justify-between items-center w-full ${isEven ? 'flex-row-reverse md:flex-row' : 'flex-row-reverse'}">
+                        <div class="hidden md:block w-5/12"></div>
+                        <div class="z-10 flex items-center bg-tesla-red text-white w-9 h-9 rounded-full justify-center text-xs font-bold shrink-0 border-2 border-black glow-red">
+                            ${idx + 1}
+                        </div>
+                        <div class="tesla-card p-5 w-full md:w-5/12 space-y-2 border-l-4 ${item.methodType==='deductive'?'border-l-purple-500':'border-l-amber-500'}">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="bg-zinc-800 text-white px-2.5 py-0.5 rounded font-bold">${item.year}년</span>
+                                <span class="text-zinc-400 text-[11px]">${item.methodType==='deductive'?'연역적 탐구':'귀납적 탐구'}</span>
+                            </div>
+                            <h3 class="font-bold text-white text-sm">${item.title}</h3>
+                            <p class="text-xs text-tesla-red">${item.scientist}</p>
+                            <p class="text-xs text-zinc-400">${item.summary}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterTimeline(type) {
+            if (type === 'all') renderTimeline(timelineData);
+            else renderTimeline(timelineData.filter(d => d.category === type));
+        }
+
+        function searchTimeline() {
+            const query = document.getElementById('timeline-search').value.toLowerCase();
+            renderTimeline(timelineData.filter(d => d.title.toLowerCase().includes(query) || d.scientist.toLowerCase().includes(query)));
+        }
+
+        function populateGroupSelect() {
+            const select = document.getElementById('group-select');
+            select.innerHTML = '';
+            timelineData.forEach((item, index) => {
+                const groupNum = index + 1;
+                const opt = document.createElement('option');
+                opt.value = groupNum;
+                opt.textContent = `${groupNum}모둠: ${item.title}`;
+                select.appendChild(opt);
+            });
+            loadGroupDataFromLocal();
+        }
+
+        function loadGroupDataFromLocal() {
+            const groupNum = document.getElementById('group-select').value;
+            const data = groupData[groupNum];
+            if (!data) return;
+
+            document.getElementById('current-group-badge').textContent = `${groupNum}모둠 활동지`;
+            document.getElementById('current-group-title').textContent = data.topicTitle;
+            document.getElementById('role-leader').value = data.roles.leader || '';
+            document.getElementById('role-researcher').value = data.roles.researcher || '';
+            document.getElementById('role-designer').value = data.roles.designer || '';
+            document.getElementById('role-presenter').value = data.roles.presenter || '';
+            document.getElementById('ws-overview').value = data.overview || '';
+            document.getElementById('ws-method-detail').value = data.methodDetail || '';
+            document.getElementById('ws-impact').value = data.impact || '';
+            document.getElementById('ws-link').value = data.link || '';
+        }
+
+        // 1. 모둠 데이터 구글 시트 저장 연동
+        function saveWorksheetToDb() {
+            const groupNum = document.getElementById('group-select').value;
+            
+            const payload = {
+                groupNum: groupNum,
+                topicTitle: groupData[groupNum].topicTitle,
+                roles: {
+                    leader: document.getElementById('role-leader').value,
+                    researcher: document.getElementById('role-researcher').value,
+                    designer: document.getElementById('role-designer').value,
+                    presenter: document.getElementById('role-presenter').value
+                },
+                overview: document.getElementById('ws-overview').value,
+                methodType: Array.from(document.getElementsByName('ws-method-type')).find(r => r.checked)?.value || 'inductive',
+                methodDetail: document.getElementById('ws-method-detail').value,
+                impact: document.getElementById('ws-impact').value,
+                link: document.getElementById('ws-link').value
+            };
+
+            // 메모리 최신화
+            groupData[groupNum] = payload;
+
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run
+                    .withSuccessHandler(res => {
+                        if (res && res.message) showToast(res.message);
+                        else showToast(`${groupNum}모둠 성공적으로 시트에 저장됨!`);
+                    })
+                    .withFailureHandler(err => showToast("저장 실패: " + err, true))
+                    .saveGroupWorksheet(payload);
+            } else {
+                showToast(`${groupNum}모둠 데이터 저장 (로컬 테스트)`);
+            }
+        }
+
+        function renderPresentationCards() {
+            const container = document.getElementById('presentation-cards-container');
+            container.innerHTML = '';
+
+            Object.keys(groupData).forEach(gNum => {
+                const g = groupData[gNum];
+                container.innerHTML += `
+                    <div class="tesla-card p-5 space-y-3.5 border-t-2 border-t-purple-500">
+                        <div class="flex justify-between items-start">
+                            <span class="bg-purple-950 text-purple-300 border border-purple-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">${gNum}모둠</span>
+                            <h3 class="font-bold text-white text-sm">${g.topicTitle}</h3>
+                        </div>
+                        <div class="text-xs bg-zinc-900/90 p-3 rounded-xl border border-zinc-800">
+                            <p class="text-zinc-300"><strong>개요:</strong> ${g.overview}</p>
+                            <p class="text-zinc-400 mt-1"><strong>연구방법:</strong> ${g.methodDetail || '작성 중...'}</p>
+                        </div>
+                        <div class="flex gap-2 text-xs">
+                            <select id="peer-score-${gNum}" class="p-2 rounded-xl border bg-zinc-950 text-white font-bold">
+                                <option value="5">★★★★★ (5점)</option>
+                                <option value="4">★★★★☆ (4점)</option>
+                                <option value="3">★★★☆☆ (3점)</option>
+                            </select>
+                            <input type="text" id="peer-comment-${gNum}" placeholder="동료 피드백 작성..." class="flex-1 p-2 rounded-xl border">
+                            <button onclick="submitPeerFeedback(${gNum})" class="bg-purple-600 hover:bg-purple-700 text-white px-3.5 py-2 rounded-xl font-bold">등록</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // 2. 동료 피드백 구글 시트 저장 연동
+        function submitPeerFeedback(gNum) {
+            const score = document.getElementById(`peer-score-${gNum}`).value;
+            const comment = document.getElementById(`peer-comment-${gNum}`).value.trim();
+            if (!comment) return showToast("피드백 코멘트를 입력해주세요.", true);
+
+            const payload = { groupNum: gNum, score: Number(score), comment: comment };
+            
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run
+                    .withSuccessHandler(res => {
+                        showToast(`${gNum}모둠 동료 피드백이 시트에 등록되었습니다!`);
+                        document.getElementById(`peer-comment-${gNum}`).value = '';
+                    })
+                    .withFailureHandler(err => showToast("피드백 저장 실패: " + err, true))
+                    .savePeerFeedback(payload);
+            } else {
+                showToast("동료 피드백이 저장되었습니다.");
+            }
+        }
+
+        // 3. 개별 평가지 제출 구글 시트 연동
+        function submitIndividualWorksheet() {
+            const name = document.getElementById('ind-student-name').value.trim();
+            const q1Text = document.getElementById('ind-q1').value.trim();
+            const q2Text = document.getElementById('ind-q2').value.trim();
+
+            if (!name) return showToast("이름과 학번을 입력해주세요.", true);
+
+            const payload = {
+                studentName: name,
+                q1: q1Text,
+                q2: q2Text
+            };
+
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run
+                    .withSuccessHandler(res => {
+                        showToast("개별 평가가 구글 시트에 성공적으로 제출되었습니다!");
+                        document.getElementById('ind-q1').value = '';
+                        document.getElementById('ind-q2').value = '';
+                    })
+                    .withFailureHandler(err => showToast("제출 오류: " + err, true))
+                    .submitIndividualWorksheet(payload);
+            } else {
+                showToast("개별 평가가 제출되었습니다.");
+            }
+        }
+
+        function sendAiQuery() {
+            const input = document.getElementById('ai-input');
+            const chatBox = document.getElementById('ai-chat-box');
+            if (!input.value.trim()) return;
+
+            chatBox.innerHTML += `
+                <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-700 text-zinc-100 max-w-2xl ml-auto">
+                    <span class="font-bold text-white block mb-1"><i class="fa-solid fa-user"></i> 학생 질문</span>
+                    ${input.value}
+                </div>
+            `;
+            const q = input.value;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                chatBox.innerHTML += `
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 max-w-2xl">
+                        <span class="font-bold text-tesla-red block mb-1"><i class="fa-solid fa-robot"></i> AI 도우미</span>
+                        질문하신 "${q}"에 대해 탐구 시 연역적 탐구 방법(가설 검증)과 귀납적 탐구 방법(관찰 종합)의 차이에 주목해보세요!
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 800);
+        }
+
+        window.onload = function() {
+            initGroupData();
+            renderTimeline();
+            populateGroupSelect();
+        };
+    </script>
+</body>
+</html>
