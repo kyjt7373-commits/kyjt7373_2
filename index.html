@@ -159,7 +159,7 @@
                 <div class="h-3 w-px bg-zinc-800"></div>
                 <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">지도교사:</span> <span class="font-bold text-white ml-1">김영주 선생님</span></div>
                 <div class="h-3 w-px bg-zinc-800"></div>
-                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">AI 엔진:</span> <span class="font-bold text-tesla-red ml-1">Gemini 3 Flash</span></div>
+                <div><span class="text-zinc-500 uppercase tracking-widest text-[10px]">AI 엔진:</span> <span class="font-bold text-tesla-red ml-1">Gemini Flash</span></div>
             </div>
         </div>
 
@@ -455,7 +455,7 @@
                             <i class="fa-solid fa-robot text-xl"></i>
                         </div>
                         <div>
-                            <h2 class="text-base font-extrabold text-white">생명과학사 AI 탐구 도우미 (Gemini API)</h2>
+                            <h2 class="text-base font-extrabold text-white">생명과학사 AI 탐구 도우미 (Gemini Flash API)</h2>
                             <p class="text-xs text-zinc-400 mt-0.5">생명과학사의 연구 방법, 학자별 업적, 연역적/귀납적 탐구 과정에 대해 자유롭게 질문해보세요.</p>
                         </div>
                     </div>
@@ -548,22 +548,66 @@
                 </div>
 
                 <!-- Statistics Metrics Row -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
                     <div class="tesla-card p-4 border-l-2 border-l-tesla-red">
                         <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">총 탐구 주제</span>
                         <span class="text-xl font-extrabold text-white mt-0.5 block">11개 모둠</span>
                     </div>
                     <div class="tesla-card p-4 border-l-2 border-l-sky-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">활동지 작성 상태</span>
+                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">모둠 작성 상태</span>
                         <span id="stat-completed-count" class="text-xl font-extrabold text-sky-400 mt-0.5 block">11개 관리</span>
                     </div>
                     <div class="tesla-card p-4 border-l-2 border-l-purple-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">AI 피드백 생성</span>
+                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">모둠 AI 피드백</span>
                         <span id="stat-ai-feedback-count" class="text-xl font-extrabold text-purple-400 mt-0.5 block">0개 완료</span>
                     </div>
+                    <div class="tesla-card p-4 border-l-2 border-l-emerald-500">
+                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">개별 제출 학생</span>
+                        <span id="stat-student-count" class="text-xl font-extrabold text-emerald-400 mt-0.5 block">0명 제출</span>
+                    </div>
                     <div class="tesla-card p-4 border-l-2 border-l-amber-500">
-                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">등록된 동료 피드백</span>
-                        <span id="stat-peer-count" class="text-xl font-extrabold text-amber-400 mt-0.5 block">0건</span>
+                        <span class="text-[11px] text-zinc-400 font-bold uppercase tracking-wider block">개별 AI 피드백</span>
+                        <span id="stat-student-ai-count" class="text-xl font-extrabold text-amber-400 mt-0.5 block">0건 완료</span>
+                    </div>
+                </div>
+
+                <!-- Individual Student Submissions & AI Feedback Table -->
+                <div class="tesla-card p-5 space-y-4 border-t-2 border-t-emerald-500">
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b border-zinc-800 pb-3">
+                        <div>
+                            <span class="bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                <i class="fa-solid fa-user-graduate mr-1"></i>학생 개별 성찰지 관제
+                            </span>
+                            <h3 class="text-sm font-bold text-white mt-1 flex items-center gap-2">
+                                개별 학생 활동 평가 & AI 맞춤형 세특/피드백 생성
+                            </h3>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="generateAllStudentAiFeedbacks()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 font-bold shadow-lg">
+                                <i class="fa-solid fa-sparkles text-amber-300"></i> 전체 학생 AI 피드백 일괄 생성
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-900 text-zinc-300 border-b border-zinc-800">
+                                    <th class="p-3 font-bold uppercase tracking-wider">학생 정보 / 주제</th>
+                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">개별 질문 답변 (Q1 / Q2)</th>
+                                    <th class="p-3 font-bold uppercase tracking-wider">자가 평가</th>
+                                    <th class="p-3 font-bold uppercase tracking-wider w-1/3">학생 맞춤형 AI 피드백</th>
+                                    <th class="p-3 font-bold uppercase tracking-wider text-center">작동</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-table-body" class="divide-y divide-zinc-800/60">
+                                <tr>
+                                    <td colspan="5" class="p-4 text-center text-zinc-500 text-xs">
+                                        <i class="fa-solid fa-spinner fa-spin mr-1"></i> 학생 개별 활동지 데이터를 불러오는 중입니다...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -643,279 +687,220 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getDatabase, ref, set, push, onValue, update } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+        import { getFirestore, doc, setDoc, collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Provided Firebase Configuration with Realtime Database URL
+        // Provided Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDSpSgCioLK1jKm_C4UtmU3KkjO4tamltQ",
             authDomain: "kyjt7373-2.firebaseapp.com",
+            databaseURL: "https://kyjt7373-2-default-rtdb.asia-southeast1.firebasedatabase.app",
             projectId: "kyjt7373-2",
             storageBucket: "kyjt7373-2.firebasestorage.app",
             messagingSenderId: "864108208166",
-            appId: "1:864108208166:web:b888b785d3b5b8d34fc6e7",
-            databaseURL: "https://kyjt7373-2-default-rtdb.asia-southeast1.firebasedatabase.app"
+            appId: "1:864108208166:web:b888b785d3b5b8d34fc6e7"
         };
 
-        // Initialize Firebase & Realtime Database
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+        const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // Global Application Identifier for Firebase Path Hierarchy
+        // Global Application Identifier for Firebase
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'kyjt7373-2';
         let currentUser = null;
 
         // In-Memory Data Cache
         window.groupWorksheetsData = {};
         window.peerFeedbacksData = [];
+        window.individualAssessmentsData = [];
         window.teacherPassword = "1234";
 
-        // Authenticate Anonymously & Bind Realtime Database Listeners
+        // Authenticate Anonymously & Bind Firestore Realtime Listeners
         window.addEventListener('DOMContentLoaded', async () => {
+            if (typeof window.initGroupSelect === 'function') window.initGroupSelect();
+            if (typeof window.renderTimeline === 'function') window.renderTimeline('all');
+
             try {
                 const userCred = await signInAnonymously(auth);
                 currentUser = userCred.user;
-                document.getElementById('db-status').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>DB 연결완료';
-                document.getElementById('db-status').className = 'font-bold text-emerald-400 ml-1';
+                const statusEl = document.getElementById('db-status');
+                if (statusEl) {
+                    statusEl.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>DB 연결완료';
+                    statusEl.className = 'font-bold text-emerald-400 ml-1';
+                }
                 
-                // Initialize Group Select Options & Default Worksheets Cache
-                initGroupSelect();
-                
-                // Realtime DB Listener 1: Group Worksheets
-                const groupRef = ref(db, `artifacts/${appId}/public/data/groupWorksheets`);
-                onValue(groupRef, (snapshot) => {
-                    const data = snapshot.val() || {};
-                    window.groupWorksheetsData = data;
-                    if (document.getElementById('group-select')) {
-                        loadGroupData();
+                // Firestore Listener 1: Group Worksheets
+                const groupColRef = collection(db, 'artifacts', appId, 'public', 'data', 'groupWorksheets');
+                onSnapshot(groupColRef, (snapshot) => {
+                    snapshot.forEach((docSnap) => {
+                        window.groupWorksheetsData[docSnap.id] = docSnap.data();
+                    });
+                    if (document.getElementById('group-select') && typeof window.loadGroupData === 'function') {
+                        window.loadGroupData();
                     }
-                    if (typeof renderTeacherTable === 'function') {
-                        renderTeacherTable();
+                    if (typeof window.renderTeacherTable === 'function') {
+                        window.renderTeacherTable();
                     }
                 }, (err) => {
-                    console.warn("Realtime DB group listener error:", err);
+                    console.warn("Firestore group snapshot listener error:", err);
                 });
 
-                // Realtime DB Listener 2: Peer Feedbacks
-                const peerRef = ref(db, `artifacts/${appId}/public/data/peerFeedbacks`);
-                onValue(peerRef, (snapshot) => {
+                // Firestore Listener 2: Peer Feedbacks
+                const peerColRef = collection(db, 'artifacts', appId, 'public', 'data', 'peerFeedbacks');
+                onSnapshot(peerColRef, (snapshot) => {
                     window.peerFeedbacksData = [];
-                    const data = snapshot.val();
-                    if (data) {
-                        Object.keys(data).forEach((key) => {
-                            window.peerFeedbacksData.push({ id: key, ...data[key] });
-                        });
+                    snapshot.forEach((docSnap) => {
+                        window.peerFeedbacksData.push({ id: docSnap.id, ...docSnap.data() });
+                    });
+                    if (typeof window.renderPresentationCards === 'function') {
+                        window.renderPresentationCards();
                     }
-                    if (typeof renderPresentationCards === 'function') {
-                        renderPresentationCards();
+                    if (typeof window.updateStatCounts === 'function') {
+                        window.updateStatCounts();
                     }
-                    updateStatCounts();
                 }, (err) => {
-                    console.warn("Realtime DB peer feedback listener error:", err);
+                    console.warn("Firestore peer feedback listener error:", err);
+                });
+
+                // Firestore Listener 3: Individual Student Assessments
+                const indColRef = collection(db, 'artifacts', appId, 'public', 'data', 'individualAssessments');
+                onSnapshot(indColRef, (snapshot) => {
+                    window.individualAssessmentsData = [];
+                    snapshot.forEach((docSnap) => {
+                        window.individualAssessmentsData.push({ id: docSnap.id, ...docSnap.data() });
+                    });
+                    if (typeof window.renderStudentTeacherTable === 'function') {
+                        window.renderStudentTeacherTable();
+                    }
+                    if (typeof window.updateStatCounts === 'function') {
+                        window.updateStatCounts();
+                    }
+                }, (err) => {
+                    console.warn("Firestore individual assessment listener error:", err);
                 });
 
             } catch (err) {
-                console.error("Firebase Auth / Connection Error:", err);
-                document.getElementById('db-status').innerHTML = '<i class="fa-solid fa-triangle-exclamation text-rose-400 mr-1"></i>로컬 모드';
-                document.getElementById('db-status').className = 'font-bold text-rose-400 ml-1';
-                initGroupSelect();
+                console.warn("Firebase Auth / Connection Fallback:", err);
+                const statusEl = document.getElementById('db-status');
+                if (statusEl) {
+                    statusEl.innerHTML = '<i class="fa-solid fa-cube text-sky-400 mr-1"></i>로컬 단독 모드';
+                    statusEl.className = 'font-bold text-sky-400 ml-1';
+                }
             }
-
-            // Initial Timeline Render
-            renderTimeline('all');
         });
 
-        // Global Realtime Database Save Helper Functions
+        // Global Firebase Save Helper Functions
         window.saveGroupWorksheetToDb = async function(groupId, data) {
             try {
-                const groupItemRef = ref(db, `artifacts/${appId}/public/data/groupWorksheets/${groupId}`);
-                await update(groupItemRef, data);
-                showToast("DB에 모둠 활동지가 저장되었습니다!");
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'groupWorksheets', groupId);
+                await setDoc(docRef, data, { merge: true });
+                if (typeof window.showToast === 'function') window.showToast("DB에 모둠 활동지가 저장되었습니다!");
             } catch(e) {
-                console.error(e);
-                showToast("로컬 메모리에 저장되었습니다 (DB 접근 실패)", true);
+                console.warn(e);
+                if (typeof window.showToast === 'function') window.showToast("로컬 메모리에 저장되었습니다 (DB 오프라인)");
             }
         };
 
         window.savePeerFeedbackToDb = async function(feedbackObj) {
             try {
-                const peerColRef = ref(db, `artifacts/${appId}/public/data/peerFeedbacks`);
-                await push(peerColRef, feedbackObj);
-                showToast("동료 피드백이 실시간 DB에 공유되었습니다!");
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'peerFeedbacks');
+                await addDoc(colRef, feedbackObj);
+                if (typeof window.showToast === 'function') window.showToast("동료 피드백이 실시간 DB에 공유되었습니다!");
             } catch(e) {
-                console.error(e);
-                showToast("피드백 등록 완료 (로컬)", false);
+                console.warn(e);
+                if (typeof window.showToast === 'function') window.showToast("피드백 등록 완료 (로컬)");
             }
         };
 
         window.saveIndividualAssessmentToDb = async function(assessmentObj) {
             try {
-                const assessmentRef = ref(db, `artifacts/${appId}/public/data/individualAssessments`);
-                await push(assessmentRef, assessmentObj);
-                showToast("개별 활동지가 정상 제출되었습니다!");
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'individualAssessments');
+                await addDoc(colRef, assessmentObj);
+                if (typeof window.showToast === 'function') window.showToast("개별 활동지가 정상 제출되었습니다!");
             } catch(e) {
-                console.error(e);
-                showToast("개별 활동지 제출 완료!", false);
+                console.warn(e);
+                if (typeof window.showToast === 'function') window.showToast("개별 활동지 제출 완료 (로컬)");
+            }
+        };
+
+        window.saveStudentAiFeedbackToDb = async function(assessmentId, feedbackText) {
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'individualAssessments', assessmentId);
+                await setDoc(docRef, { teacherAiFeedback: feedbackText }, { merge: true });
+                if (typeof window.showToast === 'function') window.showToast("학생 AI 피드백이 저장되었습니다!");
+            } catch(e) {
+                console.warn("Save student AI feedback error:", e);
             }
         };
     </script>
 
     <script>
-        // Timeline Primary Data (11 Key Historical Discoveries)
-        const timelineData = [
-            {
-                id: 'vesalius',
-                year: '1543',
-                title: '근대 해부학의 창시 (인체 해부)',
-                scientist: '안드레아스 베살리우스 (A. Vesalius)',
-                category: 'medicine',
-                methodType: 'inductive',
-                methodName: '직접 관찰 및 해부 (귀납적 연구)',
-                summary: '전통적 갈레노스 의학의 오류를 발견하고 인체 직접 해부를 통해 정밀한 해부학 서적 <인체의 구조에 대하여>를 출판함.',
-                detail: '중세 의학의 권위였던 갈레노스의 이론이 동물의 해부에 근거하여 오류가 많음을 직접 해부를 통해 증명했습니다. 구체적이고 체계적인 관찰 데이터를 수집하여 결론을 도출한 대표적 귀납적 연구 사례입니다.',
-                impact: '중세 권위주의 의학에서 벗어나 서양 근대 의학 및 경험적 관찰 과학 발달의 결정적 시발점이 되었습니다.',
-                tag: '해부학·의학'
-            },
-            {
-                id: 'harvey',
-                year: '1628',
-                title: '혈액 순환 원리 발견',
-                scientist: '윌리엄 하비 (W. Harvey)',
-                category: 'medicine',
-                methodType: 'deductive',
-                methodName: '가설 설정 및 대조/결찰 실험 (연역적 연구)',
-                summary: '심장이 펌프 작용을 하여 혈액이 닫힌 관을 따라 순환한다는 가설을 세우고, 팔 묶기 결찰 실험 및 수량적 계산으로 이를 검증함.',
-                detail: '하비는 심장이 하루 동안 분출하는 혈액량을 정량적으로 계산하여 신체가 혈액을 계속 새로 만들 수 없다는 가설을 도출했습니다. 뱀과 사람의 혈관 결찰 실험을 거쳐 혈액 순환 이론을 연역적으로 입증했습니다.',
-                impact: '근대 생리학의 정립과 함께 심혈관계 질환 연구, 수혈 및 정맥 주사 등 현대 의학 기술의 기초를 형성했습니다.',
-                tag: '생리학·혈액학'
-            },
-            {
-                id: 'hooke',
-                year: '1665',
-                title: '현미경을 통한 세포(Cell) 발견',
-                scientist: '로버트 훅 (R. Hooke)',
-                category: 'cell',
-                methodType: 'inductive',
-                methodName: '광학 현미경 관찰 및 스케치 (귀납적 연구)',
-                summary: '자체 제작한 현미경으로 코르크 마개를 관찰하여 벌집 모양의 작은 공간을 발견하고 이를 세포(Cell)라 명명함.',
-                detail: '수많은 생물 조직 관찰을 통해 공통적 구조 단위인 세포의 존재를 도출한 대표적 귀납적 연구입니다.',
-                impact: '생명체의 기본 단위인 세포학 연구의 문을 열었으며 향후 세포설 정립의 기틀이 되었습니다.',
-                tag: '세포학'
-            },
-            {
-                id: 'jenner',
-                year: '1796',
-                title: '우두 종두법 발명 (최초의 백신)',
-                scientist: '에드워드 제너 (E. Jenner)',
-                category: 'medicine',
-                methodType: 'deductive',
-                methodName: '가설 설정 및 인체 접종 실험 (연역적 연구)',
-                summary: '우두(소의 두창)에 걸린 우유짜기 여성이 천연두에 걸리지 않는다는 관찰에 착안하여 가설을 세우고 종두 접종 실험으로 검증함.',
-                detail: '소의 우두 농포액을 어린아이에게 접종한 뒤, 천연두에 감염되지 않음을 검증하여 면역 형성 원리를 가설-실험적 탐구 과정으로 확인했습니다.',
-                impact: '인류를 공포에 빠뜨린 천연두 박멸의 발판이 되었으며 현대 면역학 및 백신학을 창시했습니다.',
-                tag: '백신·면역학'
-            },
-            {
-                id: 'darwin',
-                year: '1859',
-                title: '종의 기원 및 자연선택설 발표',
-                scientist: '찰스 다윈 (C. Darwin)',
-                category: 'genetics',
-                methodType: 'inductive',
-                methodName: '비글호 탐사 및 생물 관찰 데이터 종합 (귀납적 연구)',
-                summary: '갈라파고스 군도 등 세계 각지의 동식물 및 화석 관찰 기록을 종합하여 자연선택에 의한 진화론을 제시함.',
-                detail: '핀치새의 깃털 및 깃 모양 차이, 생물 종 다양성 등의 관찰 자료를 바탕으로 "환경에 적응한 개체가 살아남아 형질을 전달한다"는 자연선택설을 도출했습니다.',
-                impact: '생물학 전반의 패러다임을 바꿨으며 철학, 사회학, 경제학 등 인류 지성사 전체에 막대한 영향을 끼쳤습니다.',
-                tag: '진화학·생태학'
-            },
-            {
-                id: 'pasteur',
-                year: '1861',
-                title: '자연발생설 부정 (백조목 플라스크 실험)',
-                scientist: '루이 파스퇴르 (L. Pasteur)',
-                category: 'cell',
-                methodType: 'deductive',
-                methodName: '대조군/실험군 가설 검증 (연역적 연구)',
-                summary: '미생물은 자연적으로 생기지 않고 공기 중 오염원에 의해 발생한다는 가설을 세우고 S자형 백조목 플라스크 실험으로 입증함.',
-                detail: '공기는 통하되 먼지는 꺾인 관에 걸리도록 설계된 플라스크로 미생물 발생을 차단하는 정교한 연역적 탐구 실험을 수행했습니다.',
-                impact: '자연발생설을 완전히 종식시켰으며 저온 살균법(Pasteurizing) 및 감염병 예방법 개발에 기여했습니다.',
-                tag: '미생물학'
-            },
-            {
-                id: 'mendel',
-                year: '1865',
-                title: '멘델의 유전 법칙 발표',
-                scientist: '그레고어 멘델 (G. Mendel)',
-                category: 'genetics',
-                methodType: 'deductive',
-                methodName: '통계적 완두 교배 실험 및 가설 검증 (연역적 탐구)',
-                summary: '완두의 7가지 대립형질 교배 실험을 통해 우열의 원리, 분리의 법칙, 독립의 법칙을 통계 분석으로 입증함.',
-                detail: '유전인자(유전자) 개념을 수학적 가설로 제시하고 수만 번의 완두 교배 데이터를 통계적으로 분석하여 가설을 입증했습니다.',
-                impact: '현대 유전학의 수학적·실험적 기초를 마련하였으며 유전 질환 해독의 시초가 되었습니다.',
-                tag: '유전학'
-            },
-            {
-                id: 'fleming',
-                year: '1928',
-                title: '페니실린(항생제) 발견',
-                scientist: '알렉산더 플레밍 (A. Fleming)',
-                category: 'medicine',
-                methodType: 'inductive',
-                methodName: '우연한 관찰 및 세균 억제대 분석 (귀납적 연구)',
-                summary: '포도상구균 배양 접시에 우연히 자란 푸른곰팡이 주변에서 세균이 증식하지 못하는 현상을 관찰함.',
-                detail: '배양 우연 관찰 데이터를 수집하여 푸른곰팡이가 미생물 억제 물질을 분비함을 확인한 귀납적 탐구입니다.',
-                impact: '최초의 항생제 페니실린 개발로 이어져 인류 수명을 획기적으로 연장하고 세균 감염병 치료의 시대를 열었습니다.',
-                tag: '의학·약학'
-            },
-            {
-                id: 'watson',
-                year: '1953',
-                title: 'DNA 이중나선 구조 규명',
-                scientist: '제임스 왓슨 & 프랜시스 크릭',
-                category: 'genetics',
-                methodType: 'deductive',
-                methodName: 'X선 회절 사진 해석 및 분자 입체 모형 구축',
-                summary: '로잘린드 프랭클린의 X선 회절 데이터와 샤가프의 염기비 데이터를 결합하여 DNA 이중나선 입체 구조를 제안함.',
-                detail: '기존 관찰 수치와 상보적 데이터 결합으로 입체 가설 모형을 수립하고 기하학적 정합성을 검증한 연구 방식입니다.',
-                impact: '분자생물학 시대의 개막을 알렸으며 유전자 복제, 단백질 합성 기전 해독의 근간이 되었습니다.',
-                tag: '분자생물학'
-            },
-            {
-                id: 'hgp',
-                year: '2003',
-                title: '사람 유전체 해독 완료 (HGP)',
-                scientist: '국제 인간게놈컨소시엄 (HGP)',
-                category: 'genetics',
-                methodType: 'mixed',
-                methodName: '빅데이터 염기서열 분석 및 컴퓨터 생명정보학 기술',
-                summary: '인간의 30억 개 염기서열 전체를 자동 해독기 및 컴퓨터 알고리즘 기술로 완벽히 정밀 지도화함.',
-                detail: '국제 협력 연구로서 자동화된 염기서열 분석기와 생명정보학(Bioinformatics) 알고리즘을 결합한 대규모 빅데이터 복합 탐구 사례입니다.',
-                impact: '맞춤형 정밀 의학, 유전자 진단, 희귀 유전 질환 치료법 개발 등 21세기 바이오 혁명의 핵심 토대가 되었습니다.',
-                tag: '유전체학·생명정보학'
-            },
-            {
-                id: 'crispr',
-                year: '2012',
-                title: 'CRISPR-Cas9 유전자 가위 기술 개발',
-                scientist: '에마뉘엘 샤르팡티에 & 제니퍼 다우드나',
-                category: 'genetics',
-                methodType: 'deductive',
-                methodName: '세균 면역계 관찰 및 정밀 가공 가설 검증',
-                summary: '세균의 적응 면역 시스템(CRISPR)을 정밀 유전자 교정 도구로 재설계하여 유전자 가위 기술을 개발함.',
-                detail: '미생물의 DNA 절단 메커니즘 관찰에 기반해 특정 염기서열을 교정하는 유도 가이드를 합성하고 표적 절단 연역적 실험을 완성했습니다.',
-                impact: '유전자 치료, 농작물 개량, 맞춤형 바이오 치료제 등 생명공학 전반의 혁명을 일으켰습니다.',
-                tag: '유전공학·유전자교정'
+        let isTeacherAuthenticated = false;
+
+        // Connected Gemini API Request Handler
+        async function callGeminiApi(promptText) {
+            const apiKey = "AQ.Ab8RN6KjcrSyV3ST5HoIvBLAQvoPnYvJAPXts4kGcxVKEw65dw";
+            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+
+            const payload = {
+                contents: [
+                    {
+                        parts: [
+                            {
+                                text: promptText
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            try {
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-goog-api-key': apiKey
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const errObj = await res.json().catch(() => ({}));
+                    console.error("Gemini API Error Response:", errObj);
+                    throw new Error(`API 호출 실패 (상태 코드: ${res.status})`);
+                }
+
+                const data = await res.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "답변을 생성하지 못했습니다.";
+            } catch (err) {
+                console.error("callGeminiApi Exception:", err);
+                return `[AI 오류 발생] Gemini API 호출을 처리할 수 없습니다: ${err.message}`;
             }
+        }
+
+        // Timeline Dataset (11 Discoveries for 11 Groups)
+        window.timelineData = [
+            { id: "g1", year: "1543년", title: "근대 해부학의 정립과 파브리카 출판", scientist: "안드레아스 베살리우스", category: "medicine", methodType: "inductive", summary: "직접 인체 해부를 관찰하여 갈레노스의 오류를 수정하고 인체 구조를 체계적으로 기록함.", detail: "관찰 대상의 사체를 직접 해부하여 기구와 기관의 구조를 세밀히 관찰 및 서술한 귀납적 연구 방법.", impact: "전통 권위 의학에서 경험적·실험적 의학으로의 대전환을 유도함." },
+            { id: "g2", year: "1628년", title: "혈액 순환 원리 발견", scientist: "윌리엄 하비", category: "medicine", methodType: "deductive", summary: "심장 박동량 계산 및 결찰 실험을 통해 혈액이 체내를 정방향 순환함을 입증.", detail: "심장이 1분간 뿜어내는 혈액량을 수치화한 가설을 세우고, 묶기(결찰) 실험으로 검증한 연역적 연구.", impact: "의학의 수량화 및 정량적 생리학의 기초를 확립함." },
+            { id: "g3", year: "1665년", title: "현미경을 이용한 세포(Cell) 발견", scientist: "로버트 훅", category: "cell", methodType: "inductive", summary: "자작 현미경으로 코르크 단면을 관찰하여 벌집 모양의 미세 구구조를 '세포'로 명명.", detail: "광학 현미경을 활용한 지속적 관찰과 스케치를 통한 귀납적 데이터 수집.", impact: "생물체의 기본 단위인 세포학의 시초를 염." },
+            { id: "g4", year: "1735년", title: "생물 이명법 및 분류 체계 창시", scientist: "칼폰 린네", category: "genetics", methodType: "inductive", summary: "속명과 종소명을 조합한 이명법을 고안하여 전 세계 생물을 체계적으로 분류.", detail: "수많은 식물과 동물의 형태적 특징을 수집·비교 관찰하여 대분류 및 소분류로 범주화함.", impact: "현대 생물학 전반의 커뮤니케이션 기준 및 계통 분류학의 기초 정립." },
+            { id: "g5", year: "1859년", title: "자연선택설 및 종의 기원 발표", scientist: "찰스 다윈", category: "genetics", methodType: "inductive", summary: "비글호 항해 관찰 데이터를 바탕으로 생물은 환경에 적응하며 진화한다는 이론 도출.", detail: "갈라파고스 핀치새, 지질 형태, 종간 유사성 관찰 데이터를 통합 비교분석한 귀납적 연역 결합.", impact: "생명관의 패러다임을 변혁하고 현대 진화생물학의 기틀을 마련함." },
+            { id: "g6", year: "1861년", title: "백조목 플라스크 실험과 생물성생설 입증", scientist: "루이 파스퇴르", category: "cell", methodType: "deductive", summary: "백조목 형태 플라스크 실험을 통해 미생물은 공기 중 포자에서 비롯됨을 입증.", detail: "'생물은 기존 생물로부터 발생한다'는 가설 설정 후 백조목 플라스크의 목을 꺾거나 유지하는 대조군 설정 연역 실험.", impact: "자연발생설 완전 종식, 백신 개발 및 무균 조작기술 발전." },
+            { id: "g7", year: "1865년", title: "멘델의 유전 법칙 규명", scientist: "그레고어 멘델", category: "genetics", methodType: "deductive", summary: "완두콩 교배 실험을 수량적으로 분석하여 분리의 법칙과 독립의 법칙 도출.", detail: "순종 대립형질을 교배하는 가설을 세우고, 자손 획득 수를 수학적/통계적으로 검증한 대표적 연역 탐구.", impact: "유전자 개념의 창시 및 현대 유전학의 출발점." },
+            { id: "g8", year: "1928년", title: "페니실린 항생물질 발견", scientist: "알렉산더 플레밍", category: "medicine", methodType: "inductive", summary: "푸른곰팡이 주변에 세균이 자라지 못하는 세균 용해 현상을 우연히 관찰.", detail: "배양 배지 오염 관찰에서 시작하여 푸른곰팡이 추출물의 항균 효과를 확인한 우연성에 기반한 귀납 관찰.", impact: "항생제 시대를 개막하여 인류 평균 수명을 획기적으로 연장함." },
+            { id: "g9", year: "1953년", title: "DNA 이중 나선 구조 규명", scientist: "왓슨 & 크릭 (프랭클린 등)", category: "genetics", methodType: "mixed", summary: "X선 회절 사진과 샤가프 법칙을 합성하여 DNA 분자의 3차원 이중나선 모델 구축.", detail: "기존 관찰 데이터와 물리적 분자 구조 모형 조립을 병행한 융합 탐구.", impact: "분자생물학의 탄생 및 유전정보 복제·발현 메커니즘 해석." },
+            { id: "g10", year: "1973년", title: "유전자 재조합 기술 개발", scientist: "스탠리 코헨 & 허버트 보이어", category: "genetics", methodType: "deductive", summary: "제한효소와 리가아제를 이용해 서로 다른 DNA를 결합한 재조합 플라스미드 제작.", detail: "특정 DNA 절단 및 연결 가설을 세우고 대장균 형질전환을 통해 실험 검증.", impact: "유전공학, 인슐린 대량생산, 바이오 의약품 산업 창출." },
+            { id: "g11", year: "2003년", title: "인간 게놈 프로젝트 (HGP) 완료", scientist: "국제 컨소시엄 (빅 데이터)", category: "genetics", methodType: "inductive", summary: "인간 DNA 약 30억 개 염기서열 전체를 해독하여 유전체 지지도 작성.", detail: "자동화 서열분석기와 정보학 알고리즘으로 대량 유전 데이터 수집 및 분석.", impact: "정밀의학, 유전자 치료, 생명정보학 혁명 유발." }
         ];
 
-        // Tab Navigation Switcher
-        function switchTab(tabId) {
+        // Core UI Navigation Function
+        window.switchTab = function(tabId) {
             const tabs = ['timeline', 'group', 'presentation', 'assessment', 'ai-tutor', 'teacher'];
             tabs.forEach(t => {
                 const sec = document.getElementById(`sec-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
                 if (sec) sec.classList.add('hidden');
-                if (btn) btn.classList.remove('active');
+                if (btn) btn.classList.remove('active', 'bg-zinc-800', 'text-white');
             });
 
             const activeSec = document.getElementById(`sec-${tabId}`);
@@ -923,241 +908,234 @@
             if (activeSec) activeSec.classList.remove('hidden');
             if (activeBtn) activeBtn.classList.add('active');
 
-            if (tabId === 'presentation') {
+            if (tabId === 'presentation' && typeof renderPresentationCards === 'function') {
                 renderPresentationCards();
-            } else if (tabId === 'teacher' && isTeacherAuthenticated) {
-                renderTeacherTable();
             }
-        }
-
-        // Timeline Filter and Search Logic
-        let currentTimelineFilter = 'all';
-
-        function filterTimeline(category) {
-            currentTimelineFilter = category;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = 'filter-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 rounded-xl font-medium transition border border-zinc-700';
-            });
-            const activeFilterBtn = document.getElementById(`filter-${category}`);
-            if (activeFilterBtn) {
-                activeFilterBtn.className = 'filter-btn active bg-tesla-red text-white px-3 py-1.5 rounded-xl font-bold transition shadow-md';
+            if (tabId === 'teacher' && isTeacherAuthenticated) {
+                if (typeof renderTeacherTable === 'function') renderTeacherTable();
+                if (typeof renderStudentTeacherTable === 'function') renderStudentTeacherTable();
             }
-            renderTimeline();
-        }
+        };
 
-        function searchTimeline() {
-            renderTimeline();
-        }
+        // Custom Toast Renderer
+        window.showToast = function(msg, isError = false) {
+            const toast = document.getElementById('toast-message');
+            const toastText = document.getElementById('toast-text');
+            const toastIcon = document.getElementById('toast-icon');
+            if (!toast || !toastText) return;
 
-        function renderTimeline() {
-            const container = document.getElementById('timeline-container');
-            const searchKw = (document.getElementById('timeline-search')?.value || '').toLowerCase();
-            container.innerHTML = '';
-
-            const filtered = timelineData.filter(item => {
-                let matchCat = true;
-                if (currentTimelineFilter === 'deductive') matchCat = (item.methodType === 'deductive');
-                else if (currentTimelineFilter === 'inductive') matchCat = (item.methodType === 'inductive');
-                else if (currentTimelineFilter !== 'all') matchCat = (item.category === currentTimelineFilter);
-
-                let matchSearch = !searchKw || 
-                    item.title.toLowerCase().includes(searchKw) || 
-                    item.scientist.toLowerCase().includes(searchKw) ||
-                    item.summary.toLowerCase().includes(searchKw);
-
-                return matchCat && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-zinc-500 text-xs">검색 조건과 일치하는 생명과학사 발견이 없습니다.</div>`;
-                return;
+            toastText.textContent = msg;
+            if (isError) {
+                toastIcon.className = "fa-solid fa-circle-exclamation text-rose-400 text-lg";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
             }
 
-            filtered.forEach((item, index) => {
-                const isLeft = index % 2 === 0;
-                const methodBadge = item.methodType === 'deductive' 
-                    ? `<span class="bg-purple-950/80 text-purple-300 border border-purple-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">연역적 탐구</span>`
-                    : item.methodType === 'inductive'
-                    ? `<span class="bg-amber-950/80 text-amber-300 border border-amber-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">귀납적 탐구</span>`
-                    : `<span class="bg-sky-950/80 text-sky-300 border border-sky-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">빅데이터 복합탐구</span>`;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        };
 
-                const cardHtml = `
-                    <div class="mb-8 flex justify-between items-center w-full ${isLeft ? 'flex-row-reverse md:flex-row' : 'flex-row-reverse'}">
-                        <div class="hidden md:block w-5/12"></div>
-                        <div class="z-20 flex items-center bg-tesla-red shadow-lg text-white font-extrabold px-3 py-1.5 rounded-full text-xs border border-red-400 shrink-0">
-                            ${item.year}년
-                        </div>
-                        <div class="w-full md:w-5/12 tesla-card p-5 space-y-2 cursor-pointer hover:border-tesla-red transition" onclick="openModal('${item.id}')">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="text-[11px] font-bold text-tesla-red uppercase tracking-wider">${item.tag}</span>
-                                ${methodBadge}
-                            </div>
-                            <h3 class="text-sm font-extrabold text-white">${item.title}</h3>
-                            <p class="text-xs text-zinc-400"><i class="fa-solid fa-user text-zinc-500 mr-1"></i>${item.scientist}</p>
-                            <p class="text-xs text-zinc-300 line-clamp-2">${item.summary}</p>
-                            <div class="pt-2 text-[11px] text-tesla-red font-bold flex items-center justify-end gap-1">
-                                상세 보기 및 연구방법 분석 <i class="fa-solid fa-arrow-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += cardHtml;
-            });
-        }
-
-        function openModal(itemId) {
-            const item = timelineData.find(x => x.id === itemId);
-            if (!item) return;
-
-            const modal = document.getElementById('timeline-modal');
-            const content = document.getElementById('modal-content');
-
-            content.innerHTML = `
-                <div class="space-y-4 text-xs">
-                    <div class="flex items-center gap-2">
-                        <span class="bg-tesla-red/20 text-tesla-red px-2.5 py-0.5 rounded-full font-bold border border-tesla-red/30">${item.year}년</span>
-                        <span class="bg-zinc-800 text-zinc-300 px-2.5 py-0.5 rounded-full font-medium">${item.tag}</span>
-                    </div>
-                    <h2 class="text-base font-extrabold text-white">${item.title}</h2>
-                    <p class="text-zinc-400 font-bold"><i class="fa-solid fa-user text-tesla-red mr-1.5"></i>${item.scientist}</p>
-
-                    <div class="bg-zinc-900/90 p-3.5 rounded-xl border border-zinc-800 space-y-1.5">
-                        <span class="font-bold text-amber-300 block"><i class="fa-solid fa-flask-vial mr-1"></i>적용된 연구 방법</span>
-                        <p class="text-zinc-200 font-semibold">${item.methodName}</p>
-                        <p class="text-zinc-400 text-[11px] leading-relaxed pt-1">${item.detail}</p>
-                    </div>
-
-                    <div class="bg-zinc-900/90 p-3.5 rounded-xl border border-zinc-800 space-y-1.5">
-                        <span class="font-bold text-sky-400 block"><i class="fa-solid fa-globe mr-1"></i>사회적·학문적 파급 효과</span>
-                        <p class="text-zinc-300 leading-relaxed">${item.impact}</p>
-                    </div>
-
-                    <div class="pt-2 flex justify-end gap-2">
-                        <button onclick="openAiPrompt('${item.scientist}의 ${item.title} 발견 과정에서 사용된 상세 연구 방법과 시대적 의의를 더 알고 싶어')" class="bg-zinc-800 hover:bg-tesla-red text-white font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-zinc-700">
-                            <i class="fa-solid fa-sparkles text-amber-300"></i> AI 심화 탐구 질문
-                        </button>
-                        <button onclick="closeModal()" class="bg-zinc-700 hover:bg-zinc-600 text-white font-bold px-4 py-2 rounded-xl transition">닫기</button>
-                    </div>
-                </div>
-            `;
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('timeline-modal').classList.add('hidden');
-        }
-
-        // Group Select Box Initialization
-        function initGroupSelect() {
+        // Group Selector Init
+        window.initGroupSelect = function() {
             const select = document.getElementById('group-select');
             if (!select) return;
             select.innerHTML = '';
             timelineData.forEach((item, index) => {
                 const opt = document.createElement('option');
                 opt.value = item.id;
-                opt.textContent = `${index + 1}모둠: ${item.title} (${item.scientist.split('(')[0]})`;
+                opt.textContent = `${index + 1}모둠: ${item.scientist} - ${item.title}`;
                 select.appendChild(opt);
             });
-            loadGroupData();
-        }
+            window.loadGroupData();
+        };
 
-        function loadGroupData() {
-            const select = document.getElementById('group-select');
-            if (!select) return;
-            const groupId = select.value;
+        // Group Data Form Loader
+        window.loadGroupData = function() {
+            const groupId = document.getElementById('group-select')?.value || 'g1';
             const item = timelineData.find(x => x.id === groupId);
-            if (!item) return;
+            const data = window.groupWorksheetsData[groupId] || {};
 
-            document.getElementById('current-group-badge').textContent = `${select.selectedIndex + 1}모둠 활동지`;
-            document.getElementById('current-group-title').textContent = item.title;
+            const idx = timelineData.findIndex(x => x.id === groupId) + 1;
+            const badgeEl = document.getElementById('current-group-badge');
+            const titleEl = document.getElementById('current-group-title');
+            if (badgeEl) badgeEl.textContent = `${idx > 0 ? idx : 1}모둠 활동지`;
+            if (titleEl) titleEl.textContent = item ? `${item.scientist}: ${item.title}` : '주제명';
 
-            const saved = window.groupWorksheetsData[groupId] || {};
+            document.getElementById('role-leader').value = data.roleLeader || '';
+            document.getElementById('role-researcher').value = data.roleResearcher || '';
+            document.getElementById('role-designer').value = data.roleDesigner || '';
+            document.getElementById('role-presenter').value = data.rolePresenter || '';
 
-            document.getElementById('role-leader').value = saved.roleLeader || '';
-            document.getElementById('role-researcher').value = saved.roleResearcher || '';
-            document.getElementById('role-designer').value = saved.roleDesigner || '';
-            document.getElementById('role-presenter').value = saved.rolePresenter || '';
+            document.getElementById('ws-overview').value = data.overview || item?.summary || '';
+            document.getElementById('ws-method-detail').value = data.methodDetail || item?.detail || '';
+            document.getElementById('ws-impact').value = data.impact || item?.impact || '';
+            document.getElementById('ws-link').value = data.link || '';
 
-            document.getElementById('ws-overview').value = saved.overview || item.summary;
-            document.getElementById('ws-method-detail').value = saved.methodDetail || item.detail;
-            document.getElementById('ws-impact').value = saved.impact || item.impact;
-            document.getElementById('ws-link').value = saved.link || '';
-
-            // Method Radio
             const radios = document.getElementsByName('ws-method-type');
-            const targetType = saved.methodType || item.methodType;
+            const methodVal = data.methodType || item?.methodType || 'deductive';
             radios.forEach(r => {
-                r.checked = (r.value === targetType);
+                r.checked = (r.value === methodVal);
             });
-        }
+        };
 
-        function saveGroupRoles() {
-            const groupId = document.getElementById('group-select').value;
-            const roleData = {
-                roleLeader: document.getElementById('role-leader').value,
-                roleResearcher: document.getElementById('role-researcher').value,
-                roleDesigner: document.getElementById('role-designer').value,
-                rolePresenter: document.getElementById('role-presenter').value,
-                updatedAt: new Date().toISOString()
-            };
-            
-            if (!window.groupWorksheetsData[groupId]) {
-                window.groupWorksheetsData[groupId] = {};
+        // Save Roles
+        window.saveGroupRoles = function() {
+            const groupId = document.getElementById('group-select')?.value;
+            if (!groupId) return;
+            if (!window.groupWorksheetsData[groupId]) window.groupWorksheetsData[groupId] = {};
+
+            window.groupWorksheetsData[groupId].roleLeader = document.getElementById('role-leader')?.value || '';
+            window.groupWorksheetsData[groupId].roleResearcher = document.getElementById('role-researcher')?.value || '';
+            window.groupWorksheetsData[groupId].roleDesigner = document.getElementById('role-designer')?.value || '';
+            window.groupWorksheetsData[groupId].rolePresenter = document.getElementById('role-presenter')?.value || '';
+
+            if (typeof window.saveGroupWorksheetToDb === 'function') {
+                window.saveGroupWorksheetToDb(groupId, window.groupWorksheetsData[groupId]);
+            } else {
+                showToast("모둠원 역할이 저장되었습니다.");
             }
-            Object.assign(window.groupWorksheetsData[groupId], roleData);
-            window.saveGroupWorksheetToDb(groupId, roleData);
-        }
+        };
 
-        function saveWorksheet() {
-            const groupId = document.getElementById('group-select').value;
+        // Save Worksheet
+        window.saveWorksheet = function() {
+            const groupId = document.getElementById('group-select')?.value;
+            if (!groupId) return;
+            if (!window.groupWorksheetsData[groupId]) window.groupWorksheetsData[groupId] = {};
+
+            let selectedMethod = 'deductive';
             const radios = document.getElementsByName('ws-method-type');
-            let selectedType = 'deductive';
-            radios.forEach(r => { if (r.checked) selectedType = r.value; });
+            radios.forEach(r => { if (r.checked) selectedMethod = r.value; });
 
-            const wsData = {
-                roleLeader: document.getElementById('role-leader').value,
-                roleResearcher: document.getElementById('role-researcher').value,
-                roleDesigner: document.getElementById('role-designer').value,
-                rolePresenter: document.getElementById('role-presenter').value,
-                overview: document.getElementById('ws-overview').value,
-                methodType: selectedType,
-                methodDetail: document.getElementById('ws-method-detail').value,
-                impact: document.getElementById('ws-impact').value,
-                link: document.getElementById('ws-link').value,
-                updatedAt: new Date().toISOString()
-            };
+            window.groupWorksheetsData[groupId].overview = document.getElementById('ws-overview')?.value || '';
+            window.groupWorksheetsData[groupId].methodType = selectedMethod;
+            window.groupWorksheetsData[groupId].methodDetail = document.getElementById('ws-method-detail')?.value || '';
+            window.groupWorksheetsData[groupId].impact = document.getElementById('ws-impact')?.value || '';
+            window.groupWorksheetsData[groupId].link = document.getElementById('ws-link')?.value || '';
 
-            if (!window.groupWorksheetsData[groupId]) {
-                window.groupWorksheetsData[groupId] = {};
+            if (typeof window.saveGroupWorksheetToDb === 'function') {
+                window.saveGroupWorksheetToDb(groupId, window.groupWorksheetsData[groupId]);
+            } else {
+                showToast("모둠 활동지가 저장되었습니다.");
             }
-            Object.assign(window.groupWorksheetsData[groupId], wsData);
-            window.saveGroupWorksheetToDb(groupId, wsData);
-        }
+        };
 
-        // Gemini API Query Helper
-        async function callGeminiApi(promptText) {
-            const apiKey = ""; // Canvas runtime environment automatically supplies key
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+        // Render Interactive Timeline
+        window.renderTimeline = function(filterCategory = 'all', searchQuery = '') {
+            const container = document.getElementById('timeline-container');
+            if (!container) return;
+            container.innerHTML = '';
 
-            const payload = {
-                contents: [{ parts: [{ text: promptText }] }],
-                systemInstruction: {
-                    parts: [{ text: "당신은 고등학교 생명과학 I 및 생명과학사 수업의 전문 AI 학습 튜터입니다. 명확하고 친절하며 학술적으로 정확한 설명을 한국어로 제공하세요." }]
+            let items = timelineData;
+            if (filterCategory !== 'all') {
+                if (filterCategory === 'deductive' || filterCategory === 'inductive') {
+                    items = items.filter(x => x.methodType === filterCategory);
+                } else {
+                    items = items.filter(x => x.category === filterCategory);
                 }
-            };
-
-            const res = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!res.ok) {
-                throw new Error("Gemini API 호출 실패");
             }
-            const data = await res.json();
-            return data.candidates?.[0]?.content?.parts?.[0]?.text || "답변을 생성하지 못했습니다.";
-        }
+
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                items = items.filter(x => x.title.toLowerCase().includes(q) || x.scientist.toLowerCase().includes(q) || x.summary.toLowerCase().includes(q));
+            }
+
+            items.forEach((item, index) => {
+                const isEven = index % 2 === 0;
+                const methodBadge = item.methodType === 'deductive' 
+                    ? '<span class="bg-purple-950 text-purple-300 border border-purple-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">연역적 탐구</span>'
+                    : (item.methodType === 'inductive' 
+                        ? '<span class="bg-amber-950 text-amber-300 border border-amber-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">귀납적 탐구</span>'
+                        : '<span class="bg-sky-950 text-sky-300 border border-sky-700/60 text-[10px] px-2 py-0.5 rounded-full font-bold">복합/병행 모델</span>');
+
+                const cardHtml = `
+                    <div class="relative flex flex-col md:flex-row items-center mb-6 ${isEven ? 'md:flex-row-reverse' : ''}">
+                        <div class="w-full md:w-1/2 p-2">
+                            <div onclick="openModal('${item.id}')" class="tesla-card p-5 cursor-pointer hover:border-tesla-red transition-all group">
+                                <div class="flex justify-between items-center gap-2 mb-2">
+                                    <span class="text-tesla-red font-mono font-extrabold text-sm">${item.year}</span>
+                                    ${methodBadge}
+                                </div>
+                                <h3 class="text-base font-extrabold text-white group-hover:text-tesla-red transition-colors">${item.title}</h3>
+                                <p class="text-xs text-zinc-400 font-semibold mb-2"><i class="fa-solid fa-user-ninja mr-1 text-zinc-500"></i>${item.scientist}</p>
+                                <p class="text-xs text-zinc-300 line-clamp-2 leading-relaxed">${item.summary}</p>
+                                <div class="mt-3 pt-2 border-t border-zinc-800/80 flex justify-between items-center text-[11px] text-zinc-500 font-medium">
+                                    <span><i class="fa-solid fa-flask text-tesla-red mr-1"></i>상세 연구방법 및 영향 보기</span>
+                                    <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform text-tesla-red"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        };
+
+        // Filter Timeline
+        window.filterTimeline = function(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-tesla-red', 'text-white', 'active');
+                btn.classList.add('bg-zinc-800', 'text-zinc-300');
+            });
+            const activeBtn = document.getElementById(`filter-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-zinc-800', 'text-zinc-300');
+                activeBtn.classList.add('bg-tesla-red', 'text-white', 'active');
+            }
+            const searchVal = document.getElementById('timeline-search')?.value || '';
+            renderTimeline(category, searchVal);
+        };
+
+        // Search Timeline
+        window.searchTimeline = function() {
+            const searchVal = document.getElementById('timeline-search')?.value || '';
+            const activeBtn = document.querySelector('.filter-btn.active');
+            const category = activeBtn ? activeBtn.id.replace('filter-', '') : 'all';
+            renderTimeline(category, searchVal);
+        };
+
+        // Modal Handlers
+        window.openModal = function(id) {
+            const item = timelineData.find(x => x.id === id);
+            if (!item) return;
+            const modal = document.getElementById('timeline-modal');
+            const content = document.getElementById('modal-content');
+            if (!modal || !content) return;
+
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start pr-6">
+                        <div>
+                            <span class="text-tesla-red font-mono font-bold text-xs">${item.year}</span>
+                            <h2 class="text-lg font-extrabold text-white mt-0.5">${item.title}</h2>
+                            <p class="text-xs text-zinc-400 font-semibold"><i class="fa-solid fa-user-astronaut mr-1"></i>${item.scientist}</p>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
+                        <span class="font-bold text-tesla-red block"><i class="fa-solid fa-file-lines mr-1"></i>주요 발견 개요</span>
+                        <p class="text-zinc-300 leading-relaxed">${item.summary}</p>
+                    </div>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
+                        <span class="font-bold text-purple-400 block"><i class="fa-solid fa-vial mr-1"></i>연구 방법 분석</span>
+                        <p class="text-zinc-300 leading-relaxed">${item.detail}</p>
+                    </div>
+                    <div class="bg-zinc-900 p-3.5 rounded-xl border border-zinc-800 text-xs space-y-1.5">
+                        <span class="font-bold text-sky-400 block"><i class="fa-solid fa-earth-americas mr-1"></i>사회적 & 학문적 영향</span>
+                        <p class="text-zinc-300 leading-relaxed">${item.impact}</p>
+                    </div>
+                    <button onclick="closeModal(); openAiPrompt('${item.scientist}의 ${item.title} 발견에 대해 생명과학사 관점에서 더 자세히 설명해줘')" class="w-full bg-tesla-red hover:bg-red-600 text-white font-bold text-xs py-2.5 rounded-xl transition shadow flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-robot"></i> AI 도우미에게 이 주제 상세 질의하기
+                    </button>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        };
+
+        window.closeModal = function() {
+            const modal = document.getElementById('timeline-modal');
+            if (modal) modal.classList.add('hidden');
+        };
 
         async function aiHelpResearch() {
             const groupId = document.getElementById('group-select').value;
@@ -1344,6 +1322,7 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
                 document.getElementById('teacher-auth-card').classList.add('hidden');
                 document.getElementById('teacher-dashboard-content').classList.remove('hidden');
                 renderTeacherTable();
+                renderStudentTeacherTable();
                 updateStatCounts();
                 showToast("교사 전용 대시보드가 인증되었습니다.");
             } else {
@@ -1446,6 +1425,109 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
             showToast("전체 AI 피드백 완결!");
         }
 
+        function renderStudentTeacherTable() {
+            const tbody = document.getElementById('student-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            const students = window.individualAssessmentsData || [];
+
+            if (students.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="p-6 text-center text-zinc-500 text-xs">
+                            <i class="fa-solid fa-clipboard-question text-lg mb-2 block"></i>
+                            아직 제출된 개별 학생 활동지가 없습니다. [4. 개별 활동지 & 루브릭] 탭에서 학생 제출을 진행해보세요.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            students.forEach((std, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-zinc-900/50 transition';
+
+                const timeStr = std.submittedAt ? new Date(std.submittedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '-';
+
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-white">
+                        <span class="text-emerald-400 text-[10px] block font-mono">${timeStr} 제출</span>
+                        ${std.studentInfo || '무명 학생'}
+                        <span class="block text-[11px] text-zinc-400 font-normal mt-0.5"><i class="fa-solid fa-book-bookmark mr-1 text-zinc-500"></i>${std.topic || '주제 미입력'}</span>
+                    </td>
+                    <td class="p-3 text-zinc-300">
+                        <p class="line-clamp-2 text-[11px]"><strong class="text-amber-300">Q1:</strong> ${std.q1 || '-'}</p>
+                        <p class="line-clamp-2 text-[11px] mt-1"><strong class="text-sky-300">Q2:</strong> ${std.q2 || '-'}</p>
+                    </td>
+                    <td class="p-3">
+                        <div class="space-y-1">
+                            <span class="bg-zinc-800 text-amber-300 border border-zinc-700 px-2 py-0.5 rounded text-[10px] font-semibold block w-fit">발견분석: ${std.eval1 || '기본'}</span>
+                            <span class="bg-zinc-800 text-sky-300 border border-zinc-700 px-2 py-0.5 rounded text-[10px] font-semibold block w-fit">영향분석: ${std.eval2 || '기본'}</span>
+                        </div>
+                    </td>
+                    <td class="p-3 text-zinc-300">
+                        <div id="student-feedback-box-${std.id || index}" class="bg-zinc-950 p-2.5 rounded-xl border border-zinc-800 text-[11px] leading-relaxed ${std.teacherAiFeedback ? 'text-emerald-300 border-emerald-900/50' : 'text-zinc-500'}">
+                            ${std.teacherAiFeedback || '아직 개별 AI 피드백이 생성되지 않았습니다.'}
+                        </div>
+                    </td>
+                    <td class="p-3 text-center">
+                        <button onclick="generateSingleStudentAiFeedback('${std.id}', ${index})" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg text-[11px] transition shadow flex items-center gap-1 mx-auto shrink-0">
+                            <i class="fa-solid fa-robot"></i> AI 피드백
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function generateSingleStudentAiFeedback(studentId, index) {
+            const student = window.individualAssessmentsData.find(s => s.id === studentId) || window.individualAssessmentsData[index];
+            if (!student) return;
+
+            showToast(`${student.studentInfo || '학생'}의 개별 AI 피드백을 생성 중입니다...`);
+
+            const prompt = `고등학교 생명과학 교사로서 학생 '${student.studentInfo}'(탐구주제: ${student.topic})의 개별 성찰 활동지를 평가해줘.
+1. 질문 답변:
+- 새롭게 알게 된 주요 발견/연구방법(Q1): ${student.q1 || '상세 미입력'}
+- 학문/사회에 미친 영향 분석(Q2): ${student.q2 || '상세 미입력'}
+2. 자가 평가 결과:
+- 연구방법 자가평가: ${student.eval1 || '기본'}
+- 사회적 영향 자가평가: ${student.eval2 || '기본'}
+
+학생의 칭찬점, 과학적 탐구 태도, 그리고 발전 방향이 포함된 친절하고 정교한 2~3줄의 맞춤형 교사 피드백(생활기록부 세부능력 및 특기사항 참고용)을 한국어로 작성해줘.`;
+
+            try {
+                const feedback = await callGeminiApi(prompt);
+                student.teacherAiFeedback = feedback;
+
+                if (student.id && typeof window.saveStudentAiFeedbackToDb === 'function') {
+                    window.saveStudentAiFeedbackToDb(student.id, feedback);
+                }
+
+                renderStudentTeacherTable();
+                updateStatCounts();
+                showToast("학생 AI 개별 피드백 생성이 완료되었습니다!");
+            } catch(e) {
+                console.error(e);
+                showToast("AI 피드백 생성 중 오류가 발생했습니다.", true);
+            }
+        }
+
+        async function generateAllStudentAiFeedbacks() {
+            const students = window.individualAssessmentsData || [];
+            if (students.length === 0) {
+                showToast("피드백을 생성할 개별 제출 건이 없습니다.", true);
+                return;
+            }
+
+            showToast(`총 ${students.length}명의 학생 AI 피드백 일괄 생성을 시작합니다...`);
+            for (let i = 0; i < students.length; i++) {
+                await generateSingleStudentAiFeedback(students[i].id, i);
+            }
+            showToast("전체 학생 AI 개별 피드백 완료!");
+        }
+
         function updateStatCounts() {
             let aiCount = 0;
             Object.values(window.groupWorksheetsData).forEach(v => {
@@ -1456,10 +1538,23 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
 
             const statPeer = document.getElementById('stat-peer-count');
             if (statPeer) statPeer.textContent = `${window.peerFeedbacksData.length}건`;
+
+            const students = window.individualAssessmentsData || [];
+            const statStudent = document.getElementById('stat-student-count');
+            if (statStudent) statStudent.textContent = `${students.length}명 제출`;
+
+            let stdAiCount = 0;
+            students.forEach(s => {
+                if (s.teacherAiFeedback) stdAiCount++;
+            });
+            const statStudentAi = document.getElementById('stat-student-ai-count');
+            if (statStudentAi) statStudentAi.textContent = `${stdAiCount}건 완료`;
         }
 
         function downloadCSV() {
             let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+            
+            csvContent += "--- 모둠별 탐구 활동 결과 ---\n";
             csvContent += "모둠번호,탐구주제,과학자,연구방법구분,연구방법상세,사회적영향,교사AI피드백\n";
 
             timelineData.forEach((item, index) => {
@@ -1476,10 +1571,26 @@ Q2 답변: ${document.getElementById('ind-q2')?.value || ''}
                 csvContent += row + "\n";
             });
 
+            csvContent += "\n--- 개별 학생 활동지 제출 및 AI 피드백 ---\n";
+            csvContent += "학생정보,선택주제,Q1_알게된발견,Q2_사회적영향,자가평가1,자가평가2,학생AI피드백\n";
+
+            (window.individualAssessmentsData || []).forEach((std) => {
+                const row = [
+                    `"${(std.studentInfo || '').replace(/"/g, '""')}"`,
+                    `"${(std.topic || '').replace(/"/g, '""')}"`,
+                    `"${(std.q1 || '').replace(/"/g, '""')}"`,
+                    `"${(std.q2 || '').replace(/"/g, '""')}"`,
+                    `"${(std.eval1 || '').replace(/"/g, '""')}"`,
+                    `"${(std.eval2 || '').replace(/"/g, '""')}"`,
+                    `"${(std.teacherAiFeedback || '').replace(/"/g, '""')}"`
+                ].join(",");
+                csvContent += row + "\n";
+            });
+
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `생명과학사_모둠탐구_결과_${new Date().toISOString().slice(0,10)}.csv`);
+            link.setAttribute("download", `생명과학사_통합_평가_결과_${new Date().toISOString().slice(0,10)}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
